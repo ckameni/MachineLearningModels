@@ -1,0 +1,1111 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Transform data by using dplyr},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Transform data by using dplyr}
+\author{}
+\date{\vspace{-2.5em}2023-03-01}
+
+\begin{document}
+\maketitle
+
+\hypertarget{explore-data-by-using-r}{%
+\subsection{Explore data by using R}\label{explore-data-by-using-r}}
+
+As a data scientist, your role is principally to explore, analyze, and
+visualize data. There's a wide range of tools and programming languages
+that you can use to do this. One of the most popular approaches is to
+use Jupyter notebooks, like this one, and the R language.
+
+R is a flexible, intuitive, and elegant programming language that's used
+in a wide range of industries, from banking to insurance,
+pharmaceutical, genetics, telecommunications, marketing, and healthcare.
+We think R is a great place to start your data-science adventure for the
+following reasons:
+
+\begin{itemize}
+\item
+  It's natively designed to support data science.
+\item
+  The diverse and welcoming R community. Just to name a few:
+  \href{http://r-ladies.org/}{R-Ladies},
+  \href{https://medium.com/@doritolay/introducing-mir-a-community-for-underrepresented-users-of-r-7560def7d861}{Minority
+  in R}, and \href{https://twitter.com/search?q=\%23rstats}{the \#rstats
+  twitter community}.
+\item
+  R has a massive set of packages for data wrangling, statistical
+  modeling, and machine learning. If you get stuck on a problem, there's
+  a high likelihood that someone has already resolved it and you can
+  learn from or build on their work.
+\end{itemize}
+
+In this notebook, you'll explore some of these packages and apply basic
+techniques to analyze data. This exercise isn't intended to be a
+comprehensive R programming exercise or even a deep dive into data
+analysis. Rather, it's intended as a crash course in some of the common
+ways in which data scientists use R to work with data.
+
+\begin{quote}
+\textbf{Note}: If you've never used the Jupyter notebooks environment
+before, here are a few things you should be aware of:
+
+\begin{itemize}
+\tightlist
+\item
+  Notebooks are made up of \emph{cells}. Some cells, such as this one,
+  contain \emph{Markdown} text, and others, such as the next one,
+  contain code.
+\item
+  You can run each code cell by using the \textbf{Run} button. The
+  \textbf{Run} button is displayed when you hover over the cell.
+\item
+  The output from each code cell is displayed immediately below the
+  cell.
+\item
+  Even though the code cells can be run individually, some variables
+  that are used in the code are global to the notebook. This means that
+  you should run all of the code cells \emph{in order}. There might be
+  dependencies between code cells, so if you skip a cell, subsequent
+  cells might not run correctly.
+\end{itemize}
+\end{quote}
+
+\hypertarget{tibbles}{%
+\subsubsection{Tibbles}\label{tibbles}}
+
+Tibbles, or data frames, are both one of the most important concepts in
+R and one of the most common and useful storage structures for data
+analysis in R. As such, it's a good idea to start with learning and
+working with tibbles, because it immediately pays off in both data
+transformation and visualization.
+
+You'll work through other data structures in R as you progress through
+the course.
+
+Tibbles are provided by the tibble package, which is part of the core
+tidyverse. So, let's take a trip into the tidyverse!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the packages in the tidyverse into the current R session}
+\FunctionTok{library}\NormalTok{ (tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.0     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.1     v tibble    3.1.8
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+\end{verbatim}
+
+From the startup message, you can see that you've loaded or attached a
+bunch of packages with the tibble included. The message also shows
+\emph{Conflicts}, which are functions from the tidyverse that conflict
+with other functions in base R or other packages you might have loaded.
+Don't worry about these for now.
+
+Good job! This means that you can now create your first tibble of
+student data by using \texttt{tibble()}, as shown in the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Build a tibble of student data}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  
+  \CommentTok{\# Student names}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Dan\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Joann\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Pedro\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Rosie\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Ethan\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Vicky\textquotesingle{}}\NormalTok{,}
+           \StringTok{\textquotesingle{}Frederic\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Jimmie\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Rhonda\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Giovanni\textquotesingle{}}\NormalTok{,}
+           \StringTok{\textquotesingle{}Francesca\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Rajab\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Naiyana\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Kian\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Jenny\textquotesingle{}}\NormalTok{,}
+           \StringTok{\textquotesingle{}Jakeem\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Helena\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Ismat\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Anila\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Skye\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Daniel\textquotesingle{}}\NormalTok{,}
+           \StringTok{\textquotesingle{}Aisha\textquotesingle{}}\NormalTok{),}
+  
+  \CommentTok{\# Study hours}
+  \AttributeTok{study\_hours =} \FunctionTok{c}\NormalTok{(}\FloatTok{10.0}\NormalTok{, }\FloatTok{11.5}\NormalTok{, }\FloatTok{9.0}\NormalTok{, }\FloatTok{16.0}\NormalTok{, }\FloatTok{9.25}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{11.5}\NormalTok{, }\FloatTok{9.0}\NormalTok{,}
+                 \FloatTok{8.5}\NormalTok{, }\FloatTok{14.5}\NormalTok{, }\FloatTok{15.5}\NormalTok{, }\FloatTok{13.75}\NormalTok{, }\FloatTok{9.0}\NormalTok{, }\FloatTok{8.0}\NormalTok{, }\FloatTok{15.5}\NormalTok{, }\FloatTok{8.0}\NormalTok{,}
+                 \FloatTok{9.0}\NormalTok{, }\FloatTok{6.0}\NormalTok{, }\FloatTok{10.0}\NormalTok{, }\FloatTok{12.0}\NormalTok{, }\FloatTok{12.5}\NormalTok{, }\FloatTok{12.0}\NormalTok{),}
+  
+  \CommentTok{\# Grades}
+  \AttributeTok{grade =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{97}\NormalTok{, }\DecValTok{49}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{53}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{26}\NormalTok{,}
+             \DecValTok{74}\NormalTok{, }\DecValTok{82}\NormalTok{, }\DecValTok{62}\NormalTok{, }\DecValTok{37}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{27}\NormalTok{, }\DecValTok{36}\NormalTok{, }\DecValTok{35}\NormalTok{,}
+             \DecValTok{48}\NormalTok{, }\DecValTok{52}\NormalTok{, }\DecValTok{63}\NormalTok{, }\DecValTok{64}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Print the tibble}
+\NormalTok{df\_students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 3
+##    name     study_hours grade
+##    <chr>          <dbl> <dbl>
+##  1 Dan            10       50
+##  2 Joann          11.5     50
+##  3 Pedro           9       47
+##  4 Rosie          16       97
+##  5 Ethan           9.25    49
+##  6 Vicky           1        3
+##  7 Frederic       11.5     53
+##  8 Jimmie          9       42
+##  9 Rhonda          8.5     26
+## 10 Giovanni       14.5     74
+## # ... with 12 more rows
+\end{verbatim}
+
+Yes! There goes your first tibble. You might have noticed that you
+created the tibble from individual elements: \texttt{name},
+\texttt{study\_hours}, and \texttt{grade}. These elements are called
+\texttt{vectors}, and you create them by using \texttt{c()}, which is
+short for \texttt{combine}. The length of each vector in a tibble must
+be the same, a property that gives tibbles their rectangular structure.
+
+You might also have noticed other abbreviations below the column names.
+These abbreviations describe the type of column, for example:
+
+\begin{itemize}
+\item
+  \texttt{chr} stands for character vectors, or strings.
+\item
+  \texttt{dbl} stands for doubles, or real numbers that might have a
+  floating point standard.
+\end{itemize}
+
+You'll encounter more abbreviations as you progress through this
+adventure.
+
+\hypertarget{load-a-data-frame-from-a-file}{%
+\subsubsection{Load a data frame from a
+file}\label{load-a-data-frame-from-a-file}}
+
+We constructed a data frame from some existing vectors, which we typed
+by hand. However, typing them manually could invite typos and other
+errors. In many real-world scenarios, data is loaded from sources such
+as files. You can then ask R to read the file and store the contents as
+an object.
+
+Let's replace the data frame of student grades with the contents of a
+CSV file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read a CSV file into a tibble}
+\NormalTok{students }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"https://raw.githubusercontent.com/MicrosoftDocs/ml{-}basics/master/data/grades.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 24 Columns: 3
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Name
+## dbl (2): StudyHours, Grade
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print the first 10 rows of the data}
+\FunctionTok{slice\_head}\NormalTok{(students, }\AttributeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    Name     StudyHours Grade
+##    <chr>         <dbl> <dbl>
+##  1 Dan           10       50
+##  2 Joann         11.5     50
+##  3 Pedro          9       47
+##  4 Rosie         16       97
+##  5 Ethan          9.25    49
+##  6 Vicky          1        3
+##  7 Frederic      11.5     53
+##  8 Jimmie         9       42
+##  9 Rhonda         8.5     26
+## 10 Giovanni      14.5     74
+\end{verbatim}
+
+You use \texttt{read\_csv()} to import a CSV file into a tibble. With
+\texttt{slice\_head(),} you can return the first \texttt{n} rows of a
+tibble.
+
+slice\_head() is actually a variant of the function \texttt{slice}. By
+using slice(), you can select rows based on their integer location. If
+you want to narrow down to rows at integer positions 5 to 10, here's one
+way to do it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#slice(students, n = 5:10)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Indexing in R starts at \texttt{1}.
+\end{quote}
+
+\hypertarget{explore-tibbles-by-using-dplyr}{%
+\subsubsection{Explore tibbles by using
+dplyr}\label{explore-tibbles-by-using-dplyr}}
+
+Now that you have some data, you can begin to solve some of the common
+data manipulation challenges:
+
+\hypertarget{filter-rows-by-using-dplyrfilter}{%
+\paragraph{Filter rows by using
+dplyr::filter()}\label{filter-rows-by-using-dplyrfilter}}
+
+The \texttt{filter()} function is used to create a subset of the
+original data, which contains rows that satisfy your conditions.
+
+Let's say you're particularly interested in focusing on \texttt{Jenny}'s
+performance. To do so, you filter the \emph{students} data to keep only
+rows where the entry for \emph{Name} exactly matches \emph{``Jenny''}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(students, Name }\SpecialCharTok{==} \StringTok{"Jenny"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   Name  StudyHours Grade
+##   <chr>      <dbl> <dbl>
+## 1 Jenny       15.5    70
+\end{verbatim}
+
+Perhaps you also want to focus on Giovanni's performance. This means
+that you want to keep rows where the name matches Jenny \emph{or}
+Giovanni. You can approach the problem by using the \texttt{\%in\%}
+operator, followed by a vector of values to look for a match, as shown
+here:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(students, Name }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Jenny"}\NormalTok{, }\StringTok{"Giovanni"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Name     StudyHours Grade
+##   <chr>         <dbl> <dbl>
+## 1 Giovanni       14.5    74
+## 2 Jenny          15.5    70
+\end{verbatim}
+
+Here, you're asking filter() to select all rows where the observations
+in the Name column match those provided in the vector of values.
+
+Sometimes, you want to retain rows whose conditions are met in multiple
+columns. Let's say you want to find the students who studied for more
+than 12 hours \emph{and} got a grade of more than 80. In this case, a
+row should be retained only if both of those conditions are met.
+
+You can express an \emph{and} statement within filter() in either of the
+following ways:
+
+\begin{itemize}
+\tightlist
+\item
+  By using a comma between conditions:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(students, StudyHours }\SpecialCharTok{\textgreater{}} \DecValTok{12}\NormalTok{, Grade }\SpecialCharTok{\textgreater{}} \DecValTok{80}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Name      StudyHours Grade
+##   <chr>          <dbl> <dbl>
+## 1 Rosie           16      97
+## 2 Francesca       15.5    82
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  By using an ampersand (\&) between conditions:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(students, StudyHours }\SpecialCharTok{\textgreater{}} \DecValTok{12} \SpecialCharTok{\&}\NormalTok{ Grade }\SpecialCharTok{\textgreater{}} \DecValTok{80}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Name      StudyHours Grade
+##   <chr>          <dbl> <dbl>
+## 1 Rosie           16      97
+## 2 Francesca       15.5    82
+\end{verbatim}
+
+\hypertarget{about-the-pipe-operator}{%
+\paragraph{About the pipe operator
+(\%\textgreater\%)}\label{about-the-pipe-operator}}
+
+The pipe operator (\texttt{\%\textgreater{}\%}) is used to perform
+operations in logical sequence by passing an object forward into a
+function or call expression. You can think of the pipe operator as
+saying ``and then'' in your code.
+
+The pipe operator is one of the functions in R that will really help you
+to work intuitively with the data, by enabling you to translate what you
+have in mind to actual code.
+
+For example, let's say you want to filter for the student named Bill.
+You can think of it like this:
+
+You're telling R to take the \emph{students} data frame \emph{and then}
+\emph{filter} the rows that contain the name \textbf{Bill}. This can be
+translated into code like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Take the students data frame AND THEN filter for the Name "Bill"}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Name }\SpecialCharTok{==} \StringTok{"Bill"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   Name  StudyHours Grade
+##   <chr>      <dbl> <dbl>
+## 1 Bill           8    NA
+\end{verbatim}
+
+Such a superpower, right?
+
+Look at what's displayed for Bill's grade: \texttt{NA}. This brings us
+to the next adventure.
+
+\hypertarget{handling-missing-values}{%
+\paragraph{Handling missing values}\label{handling-missing-values}}
+
+One of the most common issues that data scientists deal with is
+incomplete or missing data. R represents missing, or unknown values,
+with special sentinel value: \texttt{NA} (Not Available).
+
+So how would you know that the data frame contains missing values?
+
+\begin{itemize}
+\tightlist
+\item
+  One way to quickly investigate whether your data contains any
+  \texttt{NA}s is to use the function \texttt{anyNA,} which returns
+  \texttt{TRUE} or \texttt{FALSE}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anyNA}\NormalTok{(students)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Another way is to use the function \texttt{is.na()}, which indicates
+  which individual elements are missing by displaying a logical
+  \texttt{TRUE}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(students)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Name StudyHours Grade
+##  [1,] FALSE      FALSE FALSE
+##  [2,] FALSE      FALSE FALSE
+##  [3,] FALSE      FALSE FALSE
+##  [4,] FALSE      FALSE FALSE
+##  [5,] FALSE      FALSE FALSE
+##  [6,] FALSE      FALSE FALSE
+##  [7,] FALSE      FALSE FALSE
+##  [8,] FALSE      FALSE FALSE
+##  [9,] FALSE      FALSE FALSE
+## [10,] FALSE      FALSE FALSE
+## [11,] FALSE      FALSE FALSE
+## [12,] FALSE      FALSE FALSE
+## [13,] FALSE      FALSE FALSE
+## [14,] FALSE      FALSE FALSE
+## [15,] FALSE      FALSE FALSE
+## [16,] FALSE      FALSE FALSE
+## [17,] FALSE      FALSE FALSE
+## [18,] FALSE      FALSE FALSE
+## [19,] FALSE      FALSE FALSE
+## [20,] FALSE      FALSE FALSE
+## [21,] FALSE      FALSE FALSE
+## [22,] FALSE      FALSE FALSE
+## [23,] FALSE      FALSE  TRUE
+## [24,] FALSE       TRUE  TRUE
+\end{verbatim}
+
+Okay, this gets the job done.
+
+But with a larger data frame, you would find it inefficient and
+practically impossible to review each row and column individually.
+
+\begin{itemize}
+\tightlist
+\item
+  Another more intuitive way would be to get the sum of missing values
+  for each column, like this:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(students))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Name StudyHours      Grade 
+##          0          1          2
+\end{verbatim}
+
+This tells you that the last row has two NAs and the second last row has
+one missing value.
+
+Great! This means that you can tell R to \emph{filter} the rows where
+the sum of NAs is greater than 0:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(students)) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Name  StudyHours Grade
+##   <chr>      <dbl> <dbl>
+## 1 Bill           8    NA
+## 2 Ted           NA    NA
+\end{verbatim}
+
+Now that you've found the missing values, what can you do about them?
+
+One common approach is to \emph{impute} replacement values. For example,
+if the number of study hours is missing, you can assume that the student
+studied for an average amount of time and replace the missing value with
+the mean study hours. This raises the question, how do you modify
+existing columns?
+
+\hypertarget{create-and-modify-columns-by-using-dplyrmutate}{%
+\paragraph{Create and modify columns by using
+dplyr::mutate()}\label{create-and-modify-columns-by-using-dplyrmutate}}
+
+You can use \texttt{mutate()} to add or modify columns and preserve
+existing ones. Here's how to replace the missing values found in the
+\textbf{StudyHours} column with the mean study hours:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Replace NA in column StudyHours with the mean study hours}
+\NormalTok{students }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{StudyHours =} \FunctionTok{replace\_na}\NormalTok{(StudyHours, }\FunctionTok{mean}\NormalTok{(StudyHours, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)))}
+
+\CommentTok{\# Print the data frame}
+\NormalTok{students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 24 x 3
+##    Name     StudyHours Grade
+##    <chr>         <dbl> <dbl>
+##  1 Dan           10       50
+##  2 Joann         11.5     50
+##  3 Pedro          9       47
+##  4 Rosie         16       97
+##  5 Ethan          9.25    49
+##  6 Vicky          1        3
+##  7 Frederic      11.5     53
+##  8 Jimmie         9       42
+##  9 Rhonda         8.5     26
+## 10 Giovanni      14.5     74
+## # ... with 14 more rows
+\end{verbatim}
+
+\begin{quote}
+\texttt{na.rm\ =\ TRUE} argument is added to exclude missing values
+\end{quote}
+
+Awesome! You have just replaced the missing value in the StudyHour
+column with the mean study hours. In the process, you have also learned
+a new function: \texttt{replace\_na()}. \texttt{tidyr::replace\_na}
+replaces missing values with specified values.
+
+\begin{quote}
+\href{https://tidyr.tidyverse.org/index.html}{\emph{\texttt{tidyr}}}
+\emph{is a part of the tidyverse, and its role is to help you tidy up
+messy data.}
+\end{quote}
+
+Alternatively, it might be important to ensure that you use only data
+that you know to be absolutely correct. So let's drop rows that contain
+missing values by using \texttt{tidyr::drop\_na} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Drop NAs from our tibble}
+\NormalTok{students }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{()}
+
+\CommentTok{\# Print tibble}
+\NormalTok{students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 3
+##    Name     StudyHours Grade
+##    <chr>         <dbl> <dbl>
+##  1 Dan           10       50
+##  2 Joann         11.5     50
+##  3 Pedro          9       47
+##  4 Rosie         16       97
+##  5 Ethan          9.25    49
+##  6 Vicky          1        3
+##  7 Frederic      11.5     53
+##  8 Jimmie         9       42
+##  9 Rhonda         8.5     26
+## 10 Giovanni      14.5     74
+## # ... with 12 more rows
+\end{verbatim}
+
+Double-check to ensure that you have no more missing values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anyNA}\NormalTok{(students)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+Now that you've cleaned up the missing values, you're ready to do more
+meaningful data exploration. Start by comparing the mean study hours and
+grades. This requires you to extract the numeric values of the
+individual column and pass them to the \texttt{mean()} function.
+\texttt{\$} and \texttt{dplyr::pull()} do exactly this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the mean study hours using the accessor \textasciigrave{}$\textasciigrave{}}
+\NormalTok{mean\_study }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(students}\SpecialCharTok{$}\NormalTok{StudyHours)}
+
+\CommentTok{\# Get the mean grade using dplyr::pull}
+\NormalTok{mean\_grade }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(Grade) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mean}\NormalTok{()}
+
+\CommentTok{\# Print the mean study hours and mean grade}
+\FunctionTok{cat}\NormalTok{(}
+  \StringTok{\textquotesingle{}Average weekly study hours: \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(mean\_study, }\DecValTok{2}\NormalTok{),}
+   \StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{Average grade: \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(mean\_grade, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Average weekly study hours:  10.52 
+## Average grade:  49.18
+\end{verbatim}
+
+With this information, you might want to filter the data frame to find
+only the students who studied for more than the average number of hours.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get students who studied for more than the average number of hours}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(StudyHours }\SpecialCharTok{\textgreater{}}\NormalTok{ mean\_study)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    Name      StudyHours Grade
+##    <chr>          <dbl> <dbl>
+##  1 Joann           11.5    50
+##  2 Rosie           16      97
+##  3 Frederic        11.5    53
+##  4 Giovanni        14.5    74
+##  5 Francesca       15.5    82
+##  6 Rajab           13.8    62
+##  7 Jenny           15.5    70
+##  8 Skye            12      52
+##  9 Daniel          12.5    63
+## 10 Aisha           12      64
+\end{verbatim}
+
+Note that the filtered result retained the attributes of the original
+tibble and is itself a tibble, so you can work with its rows and columns
+as you would with any other tibble.
+
+For example, how about finding the average grade for students who spent
+more than the average amount of study time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mean grade of students who studied more than average hours}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(StudyHours }\SpecialCharTok{\textgreater{}}\NormalTok{ mean\_study) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(Grade) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mean}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 66.7
+\end{verbatim}
+
+Let's assume that the passing grade for the course is 60.
+
+You can use that information to add a new column to the data frame,
+indicating whether each student passed (TRUE/FALSE). Again, this calls
+for using \texttt{dplyr::mutate()}. Earlier, you saw how to use mutate
+to modify existing columns. You'll now use mutate to add a new column.
+
+The general structure of adding new columns is basically the same as
+before:
+
+\texttt{df\ \%\textgreater{}\%\ mutate(new\_column\_name\ =\ what\_it\_contains)}
+
+Let's go forth and mutate!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# TRUE/FALSE column based on whether student passed or not}
+\NormalTok{students }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%} 
+                  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Pass =}\NormalTok{ Grade }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{)}
+
+\CommentTok{\# Print data frame}
+\NormalTok{students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 4
+##    Name     StudyHours Grade Pass 
+##    <chr>         <dbl> <dbl> <lgl>
+##  1 Dan           10       50 FALSE
+##  2 Joann         11.5     50 FALSE
+##  3 Pedro          9       47 FALSE
+##  4 Rosie         16       97 TRUE 
+##  5 Ethan          9.25    49 FALSE
+##  6 Vicky          1        3 FALSE
+##  7 Frederic      11.5     53 FALSE
+##  8 Jimmie         9       42 FALSE
+##  9 Rhonda         8.5     26 FALSE
+## 10 Giovanni      14.5     74 TRUE 
+## # ... with 12 more rows
+\end{verbatim}
+
+You've now added a column \textbf{Pass} of type \texttt{lgl}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lgl} stands for logical, vectors that contain only
+  \texttt{TRUE} or \texttt{FALSE}.
+\end{itemize}
+
+\hypertarget{grouped-summaries}{%
+\paragraph{Grouped summaries}\label{grouped-summaries}}
+
+Data frames are designed for rectangular data, and you can use them to
+perform many of the kinds of data analytics operations that you can do
+in a relational database, such as grouping and aggregating tables of
+data. In R, you achieve this by using
+\texttt{dplyr::group\_by()\ \%\textgreater{}\%\ summarize()}.
+
+\begin{itemize}
+\item
+  \texttt{dplyr::group\_by()} changes the unit of analysis from the
+  complete dataset to individual groups.
+\item
+  \texttt{dplyr::summarize()} creates a new data frame for summary
+  statistics that you've specified.
+\end{itemize}
+
+For example, you can use
+\texttt{dplyr::group\_by()\ \%\textgreater{}\%\ summarize()} to group
+the student data into groups based on the \textbf{Pass} column, and then
+you can find the mean study time and grade for the groups of students
+who passed and failed the course.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mean study time and grade for students who passed or failed the course}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Pass) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_study =} \FunctionTok{mean}\NormalTok{(StudyHours), }\AttributeTok{mean\_grade =} \FunctionTok{mean}\NormalTok{(Grade))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Pass  mean_study mean_grade
+##   <lgl>      <dbl>      <dbl>
+## 1 FALSE       8.78       38  
+## 2 TRUE       14.2        73.1
+\end{verbatim}
+
+Let's say that you have many numeric columns and still want to apply the
+\texttt{mean} function across them.
+
+With \texttt{dplyr::across}, it's easy to apply a function across
+multiple columns. To demonstrate, let's apply \texttt{across} to the
+preceding example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mean study time and grade for students who passed or failed the course}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Pass) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), mean))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Pass  StudyHours Grade
+##   <lgl>      <dbl> <dbl>
+## 1 FALSE       8.78  38  
+## 2 TRUE       14.2   73.1
+\end{verbatim}
+
+What if you want to determine how many students passed or failed? You
+would have to group your data based on the \texttt{Pass} column and then
+do a tally for each group. \texttt{dplyr::count()} wraps all this to
+give you a nice grouped count like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Grouped count for Pass column}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{count}\NormalTok{(Pass)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   Pass      n
+##   <lgl> <int>
+## 1 FALSE    15
+## 2 TRUE      7
+\end{verbatim}
+
+Pretty succinct, right?
+
+\hypertarget{select-columns-with-dplyrselect}{%
+\paragraph{Select columns with
+dplyr::select()}\label{select-columns-with-dplyrselect}}
+
+You might occasionally be faced with datasets with hundreds of columns,
+in which case you might want to narrow down to some columns of interest.
+By using \texttt{select()}, you can pick or exclude columns in a data
+frame.
+
+Let's say you want to pick only the \textbf{Name} and
+\textbf{StudyHours} columns. Here's how you would approach the problem:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select the Name and StudyHours  column}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Name, StudyHours)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 2
+##    Name     StudyHours
+##    <chr>         <dbl>
+##  1 Dan           10   
+##  2 Joann         11.5 
+##  3 Pedro          9   
+##  4 Rosie         16   
+##  5 Ethan          9.25
+##  6 Vicky          1   
+##  7 Frederic      11.5 
+##  8 Jimmie         9   
+##  9 Rhonda         8.5 
+## 10 Giovanni      14.5 
+## # ... with 12 more rows
+\end{verbatim}
+
+In some scenarios, it might be more convenient to drop a specific column
+rather than select all the other columns. You do this by using the
+\texttt{!} operator.
+
+For example, let's keep all but the \textbf{StudyHours} column:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep all columns except the StudyHours column}
+\FunctionTok{select}\NormalTok{(students, }\SpecialCharTok{!}\NormalTok{StudyHours)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 3
+##    Name     Grade Pass 
+##    <chr>    <dbl> <lgl>
+##  1 Dan         50 FALSE
+##  2 Joann       50 FALSE
+##  3 Pedro       47 FALSE
+##  4 Rosie       97 TRUE 
+##  5 Ethan       49 FALSE
+##  6 Vicky        3 FALSE
+##  7 Frederic    53 FALSE
+##  8 Jimmie      42 FALSE
+##  9 Rhonda      26 FALSE
+## 10 Giovanni    74 TRUE 
+## # ... with 12 more rows
+\end{verbatim}
+
+Good job!
+
+\texttt{select} also has a number of helpers that allow you to select
+variables based on their properties. For example, you might be
+interested only in columns where the observations are \emph{numeric}.
+Here's how to do it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select numeric columns}
+\NormalTok{students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 2
+##    StudyHours Grade
+##         <dbl> <dbl>
+##  1      10       50
+##  2      11.5     50
+##  3       9       47
+##  4      16       97
+##  5       9.25    49
+##  6       1        3
+##  7      11.5     53
+##  8       9       42
+##  9       8.5     26
+## 10      14.5     74
+## # ... with 12 more rows
+\end{verbatim}
+
+\texttt{select()} can make working with datasets with many variables
+more manageable.
+
+\hypertarget{order-rows-by-using-dplyrarrange}{%
+\paragraph{Order rows by using
+dplyr::arrange()}\label{order-rows-by-using-dplyrarrange}}
+
+Let's wrap up this adventure by sorting the student data by Grade, in
+descending order, and then assigning the resulting sorted data frame to
+the variable name \emph{students\_sorted}.
+
+To do this, you'll need to reach into dplyr and take one more verb:
+\texttt{arrange()}, which orders the rows of a data frame by column
+values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a data frame with the data sorted by Grade (descending)}
+\NormalTok{students\_sorted }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Sort by descending order}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Grade))}
+
+\CommentTok{\# Print data frame}
+\NormalTok{students\_sorted}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 4
+##    Name      StudyHours Grade Pass 
+##    <chr>          <dbl> <dbl> <lgl>
+##  1 Rosie           16      97 TRUE 
+##  2 Francesca       15.5    82 TRUE 
+##  3 Giovanni        14.5    74 TRUE 
+##  4 Jenny           15.5    70 TRUE 
+##  5 Aisha           12      64 TRUE 
+##  6 Daniel          12.5    63 TRUE 
+##  7 Rajab           13.8    62 TRUE 
+##  8 Frederic        11.5    53 FALSE
+##  9 Skye            12      52 FALSE
+## 10 Dan             10      50 FALSE
+## # ... with 12 more rows
+\end{verbatim}
+
+\begin{quote}
+To get help on any function (\texttt{arrange()}, for example), run the
+following command:
+
+\texttt{?arrange}
+\end{quote}
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+That's it for now!
+
+It's rare in large, complex projects that data scientists manage to
+arrange their data as precisely as they'd like.
+
+Fortunately, dplyr provides simple \texttt{verbs}, or functions that
+correspond to the most common data manipulation tasks, to help you
+translate your thoughts into code.
+
+By using the six verbs that learned in this exercise (\texttt{filter},
+\texttt{arrange}, \texttt{select}, \texttt{mutate}, \texttt{group\_by},
+and \texttt{summarise}), you're well on your way to solving the vast
+majority of data manipulation challenges.
+
+In your next workbook, you'll look at how to create graphs and explore
+data in additional interesting ways.
+
+\hypertarget{further-reading}{%
+\subsection{Further reading}\label{further-reading}}
+
+To learn more about the R packages you explored in this notebook, see:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.tidyverse.org/packages/}{Tidyverse packages}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,805 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Visualize your data by using ggplot2},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Visualize your data by using ggplot2}
+\author{}
+\date{\vspace{-2.5em}2023-03-01}
+
+\begin{document}
+\maketitle
+
+\hypertarget{visualize-your-data-by-using-r}{%
+\subsection{Visualize your data by using
+R}\label{visualize-your-data-by-using-r}}
+
+There's a wise saying that goes something like this: a picture is worth
+a thousand rows and columns.
+
+(Actually, we made that up. There's no such wise saying, but you get the
+gist, right?)
+
+In this notebook, you'll apply basic techniques to analyze data with
+basic statistics and visualize them by using graphs with
+\texttt{ggplot2}, a core member of the Tidyverse.
+
+\hypertarget{load-your-data}{%
+\subsection{Load your data}\label{load-your-data}}
+
+Before you begin, load the same data about study hours that you analyzed
+in the last notebook. You'll also recalculate who passed your class,
+just as you did before. To see the data, run the code in the following
+cell by selecting the \textbf{► Run} button.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the tidyverse and make it available in the current R session}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.0     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.1     v tibble    3.1.8
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+\end{verbatim}
+
+Now, let's get the data ready for further analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read a CSV file into a tibble}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"https://raw.githubusercontent.com/MicrosoftDocs/ml{-}basics/master/data/grades.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 24 Columns: 3
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Name
+## dbl (2): StudyHours, Grade
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove any rows with missing data}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{()}
+
+\CommentTok{\# Add a column "Pass" that specifies whether a student passed or failed}
+\CommentTok{\# Assuming \textquotesingle{}60\textquotesingle{} is the grade needed to pass}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Pass =}\NormalTok{ Grade }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{)}
+
+\CommentTok{\# Print the results}
+\NormalTok{df\_students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 4
+##    Name     StudyHours Grade Pass 
+##    <chr>         <dbl> <dbl> <lgl>
+##  1 Dan           10       50 FALSE
+##  2 Joann         11.5     50 FALSE
+##  3 Pedro          9       47 FALSE
+##  4 Rosie         16       97 TRUE 
+##  5 Ethan          9.25    49 FALSE
+##  6 Vicky          1        3 FALSE
+##  7 Frederic      11.5     53 FALSE
+##  8 Jimmie         9       42 FALSE
+##  9 Rhonda         8.5     26 FALSE
+## 10 Giovanni      14.5     74 TRUE 
+## # ... with 12 more rows
+\end{verbatim}
+
+Good job!
+
+\hypertarget{visualize-data-by-using-ggplot2}{%
+\subsection{Visualize data by using
+ggplot2}\label{visualize-data-by-using-ggplot2}}
+
+Data frames provide a great way to explore and analyze rectangular data,
+but sometimes plotting the data can greatly improve your ability to
+analyze the data, see underlying trends, and raise new questions.
+
+\texttt{Ggplot2} is a package for creating elegant graphics for data
+analysis in R. Compared with other graphing systems, ggplot2 provides a
+flexible and intuitive way of creating graphs by combining independent
+components of a graphic in a series of iterative steps. This allows you
+to create visualizations that match your needs rather than being limited
+to sets of predefined graphics.
+
+Now let's see this in action. Start with a simple bar chart that shows
+each student's grade:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Grade))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+Well, that worked. But the chart could use some improvements to help
+clarify what you're looking at. We'll get to that, but let's first walk
+through the process of creating graphics in ggplot2.
+
+You initialize a graphic by using the function \texttt{ggplot()} and the
+data frame to use for the plot. \texttt{ggplot(data\ =\ df\_students)}
+basically creates an empty graph to which you can add layers by using a
+plus sign (+).
+
+\texttt{geom\_col()} then adds a layer of bars whose height corresponds
+to the variables that are specified by the \texttt{mapping} argument.
+The mapping argument is always paired with \texttt{aes()}, which
+specifies how variables in the data are mapped. What goes into
+\texttt{aes()} are variables found in the data. In this case, you
+specified that you want to map \texttt{Name} to the x-axis and
+\texttt{Grade} to the y-axis.
+
+And that's it! You'll follow and extend this blueprint to make different
+types of graphs.
+
+Now, let's improve the visual elements of the plot. For example, the
+following code:
+
+\begin{itemize}
+\tightlist
+\item
+  Specifies the color of the bar chart.
+\item
+  Adds a title to the chart (so you know what it represents)
+\item
+  Adds labels to the x-axis and y-axis (so you know which axis shows
+  which data)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Change the default grey background}
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_light}\NormalTok{())}
+
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Grade),}
+           \CommentTok{\# Specifiy color and transparency of the bars}
+           \AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\# Add a title to the chart}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Student Grades"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\# Add labels to axes}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Student"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Grade"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Whoa! That's a step in the right direction. You can improve this even
+further using \texttt{ggplot2}'s comprehesive theming system. Themes are
+a powerful way to customize the non-data components of your plots. That
+is, you can add titles, labels, fonts, background, gridlines, and
+legends. You can learn more about modifying components of a theme by
+running \texttt{?theme}.
+
+For example, you can:
+
+\begin{itemize}
+\tightlist
+\item
+  Center the title
+\item
+  Add a grid (to make it easier to determine the values for the bars)
+\item
+  Rotate the x-axis markers (so you can read them)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Grade),}
+           \AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Student Grades"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Student"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Grade"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \CommentTok{\# Center the title}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+    
+    \CommentTok{\# Add a grid (to make it easier to determine the bar values}
+    \AttributeTok{panel.grid =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.grid.major.y =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+    
+    \CommentTok{\# Rotate the x{-}axis markers so you can read them}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{)}
+    
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+## i Please use the `linewidth` argument instead.
+\end{verbatim}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Good job! Perhaps the bar chart would be more informative if the student
+names were in a certain order, right? This is a good chance to showcase
+how to use \texttt{dplyr} and \texttt{ggplot2} to derive insights from
+your data.
+
+So, let's reorder the levels of the Name column in descending order,
+based on the Grade column, and then plot this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Name =} \FunctionTok{fct\_reorder}\NormalTok{(Name, Grade, }\AttributeTok{.desc =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Grade),}
+           \AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Student Grades"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Student"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Grade"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+    
+    \AttributeTok{panel.grid =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.grid.major.y =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+    
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{)}
+    
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+That's a much better plot, both aesthetically and informationally. For
+example, you can quickly and easily discern how each student performed.
+
+\hypertarget{get-started-with-statistical-analysis}{%
+\subsection{Get started with statistical
+analysis}\label{get-started-with-statistical-analysis}}
+
+Now that you know how to use R to manipulate and visualize data, you can
+start analyzing it.
+
+A lot of data science is rooted in \emph{statistics}, so you'll explore
+some basic statistical techniques.
+
+\begin{quote}
+\textbf{Note}: This exercise isn't intended to teach you statistics.
+That's much too big a topic for this notebook. But it will introduce you
+to some statistical concepts and techniques that data scientists use as
+they explore data in preparation for machine-learning modeling.
+\end{quote}
+
+\hypertarget{descriptive-statistics-and-data-distribution}{%
+\subsubsection{Descriptive statistics and data
+distribution}\label{descriptive-statistics-and-data-distribution}}
+
+When data scientists examine a \emph{variable} (for example, a sample of
+student grades), they're particularly interested in the variable's
+\emph{distribution}. That is, they want to know how the various grade
+values are spread across the sample. The starting point for this
+exploration is often to visualize the data as a histogram, and to see
+how frequently each variable value occurs.
+
+So what \texttt{geom} are you going to use? You'll say, ''
+\texttt{geom\_histogram}``, because you are already getting the hang of
+this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize distribution of the grades in a histogram}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Grade))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+All right, this certainly tells you something about your data. For
+example, most of the grades seem to be about 50. However,
+\texttt{ggplot2} is extremely flexible and allows you to experiment with
+different function arguments to better reveal the story behind your
+data. By looking at \texttt{?geom\_histogram}, you can experiment with
+arguments such as \texttt{binwidth} and \texttt{boundary}, as shown
+here:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize distribution of the grades in a histogram}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Grade), , }\AttributeTok{binwidth =} \DecValTok{20}\NormalTok{, }\AttributeTok{boundary =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Grade\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+Much better! The histogram for grades is a symmetric shape, where the
+most frequently occurring grades tend to be in the middle of the range
+(about 50), with the least frequently occurring grades displayed at the
+extreme ends of the scale.
+
+\hypertarget{measures-of-central-tendency}{%
+\subsubsection{Measures of central
+tendency}\label{measures-of-central-tendency}}
+
+To understand the distribution better, you can examine so-called
+\emph{measures of central tendency}, which is a fancy way of describing
+statistics that represent the \emph{middle} of the data. The goal of
+this is to try to find a \emph{typical} value. Common ways to define the
+middle of the data include:
+
+\begin{itemize}
+\item
+  The \emph{mean}: A simple average that's calculated by adding all the
+  values in the sample set, and then dividing the total by the number of
+  samples.
+\item
+  The \emph{median}: The value in the middle of the range of all of the
+  sample values.
+\item
+  The \emph{mode}: The most commonly occurring value in the sample set.
+
+  \begin{quote}
+  \textbf{Note}: Of course, in some sample sets, there might be a tie
+  for the most common value. When this occurs, the dataset is described
+  as \emph{bimodal} or even \emph{multimodal}.
+
+  Base R doesn't provide a \emph{function} for finding the \emph{mode}.
+  But worry not, \texttt{statip::mfv} returns the most frequent values
+  or modes found in a vector. For other excellent workarounds, see
+  \href{https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode}{stackoverflow
+  thread}.
+  \end{quote}
+\end{itemize}
+
+Let's calculate these values, along with the minimum and maximum values
+for comparison, and show them on the histogram.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load statip into the current R sesssion}
+\FunctionTok{library}\NormalTok{(statip)}
+
+\CommentTok{\# Get summary statistics}
+\NormalTok{min\_val }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(df\_students}\SpecialCharTok{$}\NormalTok{Grade)}
+\NormalTok{max\_val }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(df\_students}\SpecialCharTok{$}\NormalTok{Grade)}
+\NormalTok{mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(df\_students}\SpecialCharTok{$}\NormalTok{Grade)}
+\NormalTok{med\_val }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(df\_students}\SpecialCharTok{$}\NormalTok{Grade)}
+\NormalTok{mod\_val }\OtherTok{\textless{}{-}} \FunctionTok{mfv}\NormalTok{(df\_students}\SpecialCharTok{$}\NormalTok{Grade)}
+
+\CommentTok{\# Print the stats}
+\FunctionTok{cat}\NormalTok{(}
+  \StringTok{"Minimum: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(min\_val, }\DecValTok{2}\NormalTok{),}
+   \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mean: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(mean\_val, }\DecValTok{2}\NormalTok{),}
+   \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Median: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(med\_val, }\DecValTok{2}\NormalTok{),}
+   \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mode: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(mod\_val, }\DecValTok{2}\NormalTok{),}
+   \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Maximum: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(max\_val, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Minimum:  3 
+## Mean:  49.18 
+## Median:  49.5 
+## Mode:  50 
+## Maximum:  97
+\end{verbatim}
+
+Now let's incorporate these statistics in your graph:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot a histogram}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Grade), }\AttributeTok{binwidth =} \DecValTok{20}\NormalTok{, }\AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{boundary =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  
+\CommentTok{\# Add lines for the statistics}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ min\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}cyan\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ med\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mod\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ max\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  
+\CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Data Distributiaon\textquotesingle{}}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+\end{verbatim}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{quote}
+\texttt{geom\_vline()} adds a vertical reference line to a plot.
+\end{quote}
+
+Good job!
+
+For the grade data, the mean, median, and mode all seem to be more or
+less in the middle of the minimum and maximum, at around 50.
+
+Another way to visualize the distribution of a variable is to use a
+\emph{box} plot (sometimes called a \emph{box-and-whiskers} plot). Let's
+create one for the grade data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot a box plot}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_students) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\NormalTok{, }\AttributeTok{y =}\NormalTok{ Grade), }\AttributeTok{fill =} \StringTok{"\#E69F00"}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray23"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  
+  \CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Data Distribution"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Grade"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+The box plot shows the distribution of the grade values in a different
+format than the histogram shows it. The \emph{box} part of the plot
+shows where the inner two \emph{quartiles} of the data reside. So, in
+this case, half of the grades are between approximately 36 and 63. The
+\emph{whiskers} extending from the box show the outer two quartiles, so
+the other half of the grades in this case are between 0 and 36 or 63 and
+100. The line in the box indicates the \emph{median} value.
+
+It's often useful to combine histograms and box plots, with the box
+plot's orientation changed to align it with the histogram. In some ways,
+it can be helpful to think of the histogram as a ``front elevation''
+view of the distribution, and the box plot as a ``plan'' view of the
+distribution from above. Because you might need to plot histograms and
+box plots for different variables, it might also be convenient to write
+a function. With a function, you can automate common tasks in a more
+powerful and general way than by copying and pasting.
+
+Let's get right to it. Functions in R are generally defined in this
+fashion:
+
+\texttt{name\ \textless{}-\ function(variables)\ \{return(value)\}}
+
+\begin{quote}
+\href{https://patchwork.data-imaginist.com/}{patchwork} extends the
+\texttt{ggplot} API by providing mathematical operators (such as
+\texttt{+} or \texttt{/}) for combining multiple plots. Yes, it's as
+easy as that.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(patchwork)}
+\CommentTok{\# Create a function that you can reuse}
+\NormalTok{show\_distribution }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(var\_data, binwidth) \{}
+  
+  \CommentTok{\# Get summary statistics by first extracting values from the column}
+\NormalTok{  min\_val }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  max\_val }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  med\_val }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mod\_val }\OtherTok{\textless{}{-}}\NormalTok{ statip}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+
+  \CommentTok{\# Print the stats}
+\NormalTok{  stats }\OtherTok{\textless{}{-}}\NormalTok{ glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}Minimum: \{format(round(min\_val, 2), nsmall = 2)\}}
+\StringTok{   Mean: \{format(round(mean\_val, 2), nsmall = 2)\}}
+\StringTok{   Median: \{format(round(med\_val, 2), nsmall = 2)\}}
+\StringTok{   Mode: \{format(round(mod\_val, 2), nsmall = 2)\}}
+\StringTok{   Maximum: \{format(round(max\_val, 2), nsmall = 2)\}\textquotesingle{}}
+\NormalTok{  )}
+  
+  \CommentTok{\# Plot the histogram}
+\NormalTok{  hist\_gram }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data)), }\AttributeTok{binwidth =}\NormalTok{ binwidth,}
+                 \AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{boundary =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add lines for the statistics}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ min\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}cyan\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ med\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mod\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ max\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Data Distribution\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  \CommentTok{\# Plot the box plot}
+\NormalTok{  bx\_plt }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data), }\AttributeTok{y =} \DecValTok{1}\NormalTok{),}
+               \AttributeTok{fill =} \StringTok{"\#E69F00"}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray23"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+    
+    \CommentTok{\# Add titles and labels}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Value"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  
+  \CommentTok{\# To return multiple outputs, use a list}
+  \FunctionTok{return}\NormalTok{(}
+    
+    \FunctionTok{list}\NormalTok{(stats,}
+         \CommentTok{\# Combine histogram and box plot using library patchwork}
+\NormalTok{         hist\_gram }\SpecialCharTok{/}\NormalTok{ bx\_plt)}
+    
+\NormalTok{        ) }\CommentTok{\# End of returned outputs}
+  
+\NormalTok{\} }\CommentTok{\# End of function}
+\end{Highlighting}
+\end{Shaded}
+
+Now that the \texttt{show\_distribution()} function is done, let's get a
+variable column to examine and then call the function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the variable to examine}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Grade)}
+
+\CommentTok{\# Call the function}
+\FunctionTok{show\_distribution}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col, }\AttributeTok{binwidth =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## Minimum: 3.00
+## Mean: 49.18
+## Median: 49.50
+## Mode: 50.00
+## Maximum: 97.00
+## 
+## [[2]]
+\end{verbatim}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+All the measurements of central tendency are right in the middle of the
+data distribution, which is symmetric with values becoming progressively
+lower in both directions from the middle.
+
+To explore this distribution in more detail, you need to understand that
+statistics is fundamentally about taking \emph{samples} of data and
+using probability functions to extrapolate information about the full
+\emph{population} of data. For example, the student data consists of 22
+samples, and for each sample there's a grade value. You can think of
+each sample grade as a variable that's been randomly selected from the
+set of all grades awarded for this course. With enough of these random
+variables, you can calculate something called a \emph{probability
+density function}, which estimates the distribution of grades for the
+full population.
+
+A density plot is a representation of the distribution of a numeric
+variable. It is a smoothed version of the histogram and is often used in
+the same kind of situation.
+
+\begin{quote}
+\texttt{geom\_density()} computes and draws a kernel density estimate,
+which is a smoothed version of the histogram.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a function that returns a density plot}
+\NormalTok{show\_density }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(var\_data) \{}
+  
+  \CommentTok{\# Get statistics}
+\NormalTok{  mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  med\_val }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mod\_val }\OtherTok{\textless{}{-}}\NormalTok{ statip}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+  
+  
+  \CommentTok{\# Plot the density plot}
+\NormalTok{  density\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data)), }\AttributeTok{fill=}\StringTok{"orangered"}\NormalTok{, }\AttributeTok{color=}\StringTok{"white"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add lines for the statistics}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}cyan\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ med\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mod\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Data Density\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Density\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  
+  
+  \FunctionTok{return}\NormalTok{(density\_plot) }\CommentTok{\# End of returned outputs}
+  
+\NormalTok{\} }\CommentTok{\# End of function}
+
+
+\CommentTok{\# Get the density of Grade}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Grade)}
+\FunctionTok{show\_density}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Visualize-your-data-by-using-ggplot2_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+As expected from the histogram of the sample, the density shows the
+characteristic ``bell curve'' of what statisticians call a \emph{normal}
+distribution with the mean and mode at the center and symmetric tails.
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+We've introduced quite a few new concepts here. In this exercise,
+you've:
+
+\begin{itemize}
+\tightlist
+\item
+  Made graphs with ggplot2.
+\item
+  Seen how to customize these graphs.
+\item
+  Calculated basic statistics, such as medians.
+\item
+  Looked at the spread of data by using box plots and histograms.
+\item
+  Learned about samples versus populations.
+\item
+  Estimated what the population of graphs might look like from a sample
+  of grades.
+\end{itemize}
+
+In your next notebook, you'll look at spotting unusual data and finding
+relationships between and among your data.
+
+\hypertarget{further-reading}{%
+\subsection{Further reading}\label{further-reading}}
+
+To learn more about the R packages and concepts you explored in this
+notebook, see:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.tidyverse.org/packages/}{Tidyverse packages}
+\item
+  \href{https://patchwork.data-imaginist.com/}{Patchwork}
+\item
+  \href{https://skirmer.github.io/presentations/functions_with_r.html\#1}{Functions
+  with R}
+\end{itemize}
+
+\end{document}

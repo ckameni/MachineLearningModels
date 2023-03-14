@@ -1,0 +1,634 @@
+---
+title: "Challenge - Data exploration"
+output:
+  word_document: default
+  pdf_document: default
+date: "2023-02-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Challenge: Explore real-world flight data
+As a data scientist, a significant part of your role is to explore, analyze, and visualize data. In this challenge, you'll explore a real-world dataset that contains flight data from the US Department of Transportation.
+
+Let's start by loading the packages you'll need for this exploration.
+
+```{r }
+# Load the required packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(summarytools)
+  library(glue)
+  library(patchwork)
+  })
+
+# Initialize github repo path 
+# containing test files used to check your answers
+testsFolderPath <- "https://raw.githubusercontent.com/MicrosoftDocs/mslearn-machine-learning-with-r/main/tests/explore-analyze-data-with-r/"
+
+
+```
+
+Now, you can import the data into R and start doing some data science on it!
+
+```{r }
+# Load and view the data
+df_flights <- read_csv("https://raw.githubusercontent.com/MicrosoftDocs/ml-basics/master/challenges/data/flights.csv", show_col_types = FALSE)
+
+df_flights %>%
+  slice_head(n = 7)
+
+```
+The dataset contains observations of US domestic flights in 2013, and consists of the following fields:
+
+- **Year**: The year of the flight (all records are from 2013)
+- **Month**: The month of the flight
+- **DayofMonth**: The day of the month on which the flight departed
+- **DayOfWeek**: The day of the week on which the flight departed, from 1 (Monday) to 7 (Sunday)
+- **Carrier**: The two-letter abbreviation for the airline
+- **OriginAirportID**: A unique numeric identifier for the departure aiport
+- **OriginAirportName**: The full name of the departure airport
+- **OriginCity**: The departure airport city
+- **OriginState**: The departure airport state
+- **DestAirportID**: A unique numeric identifier for the destination aiport
+- **DestAirportName**: The full name of the destination airport
+- **DestCity**: The destination airport city
+- **DestState**: The destination airport state
+- **CRSDepTime**: The scheduled departure time
+- **DepDelay**: The number of minutes the departure was delayed (flights that left ahead of schedule have a negative value)
+- **DelDelay15**: A binary indicator that the departure was delayed by more than 15 minutes (and is therefore considered "late")
+- **CRSArrTime**: The scheduled arrival time
+- **ArrDelay**: The number of minutes the arrival was delayed (flights that arrived ahead of schedule have a negative value)
+- **ArrDelay15**: A binary indicator that the arrival was delayed by more than 15 minutes (and is therefore considered "late")
+- **Cancelled**: A binary indicator that the flight was canceled
+
+Your challenge is to explore the flight data to analyze factors that might cause delays in a flight's departure or arrival.
+
+1.  Start by cleaning the data.  
+
+    - Identify any null or missing data, and impute appropriate replacement values.  
+
+    - Identify and eliminate any outliers in the **DepDelay** and **ArrDelay** columns.  
+
+2.  Explore the cleaned data.  
+
+    - View summary statistics for the numeric fields in the dataset.
+    - Determine the distribution of the **DepDelay** and **ArrDelay** columns.
+    - Use statistics, aggregate functions, and visualizations to answer the following questions:  
+
+        - *What are the average (mean) departure and arrival delays?*
+        - *How do the carriers compare in terms of arrival delay performance?*
+        - *Is there a noticeable difference in arrival delays for different days of the week?*
+        - *Which departure airport has the highest average departure delay?*
+        - *Do late departures tend to result in longer arrival delays than on-time departures?*
+        - *Which route (from departure airport to destination airport) has the most late arrivals?*
+        - *Which route has the highest average arrival delay?*
+
+Sometimes, when there are a lot of columns in the data, it can be difficult at first to get a good grasp of it by using `slice_head`.
+
+By using `glimpse`, you can view a transposed version of the data frame, where columns are displayed vertically and the data is displayed horizontally. This makes it possible to easily view every column in a data frame. At the same time, `glimpse` shows the dimension of the data frame and underlying data types of the columns.
+
+```{r}
+# Get a glimpse of your data
+df_flights %>%
+  glimpse()
+
+```
+## Clean the data for missing values
+
+After you've imported your data, it's always a good idea to clean it. The importance of this task is often underestimated, yet it's a fundamental step that's necessary for successful data analysis.
+
+Let's find how many null values there are for each column.
+
+```{r}
+# Find how many null values there are for each column.
+colSums(is.na(df_flights))
+
+```
+
+It looks like there are some NA (missing values) `late departure` indicators in the **DepDel15** column. A departure is considered late if the delay is 15 minutes or more, so let's see the delays for the ones with an NA late indicator:
+
+**Step 1**
+
+Starting with `df_flights`, select columns `DepDelay` and `DepDel15`, and then filter them to obtain rows where the value of `DepDel15` is `NA`. Assign the results in a variable named `flights_depdel`.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Select columns DepDelay and DepDel15
+# and then filter the tibble to obtain
+# observations where there is a missing value of DepDel15
+
+flights_depdel <- df_flights %>%
+  select(DepDelay, DepDel15) %>%
+  filter(is.na(DepDel15))
+
+```
+
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%201.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+
+Good job! Now, let's `glimpse` at `flights_depdel`.
+```{r}
+flights_depdel %>%
+  glimpse()
+```
+
+From the first few observations, it looks like the flights in `DepDel15` (a binary indicator that the departure was delayed by more than 15 minutes) all have a corresponding delay of 0 in `DepDelay`(the number of minute the departure was delayed). Let's check by looking at the summary statistics for the `DepDelay` records:
+
+
+```{r}
+# Get summary statistics using summary function
+df_flights %>%
+  filter(rowSums(is.na(.)) > 0) %>%
+  select(DepDelay) %>%
+  summary()
+
+```
+The min, max, and mean are all 0, so it seems that none of these were actually *late* departures.
+
+**Step 2**
+
+Starting with `df_flights`, replace the missing values in the **DepDel15** column with a `0`. Assign this to a variable named `df_flights`.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Replace missing values in DepDel15 with 0
+df_flights <- df_flights %>%
+  mutate(DepDel15 = replace_na(DepDel15, 0))
+```
+
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%202.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+
+Good job! There are no missing values now. Let's take this a little further.
+
+### Clean the outliers
+
+An outlier is a data point that differs significantly from other observations. Let's create a function that shows the distribution and summary statistics for a specified column.
+
+```{r}
+# Function to show summary stats and distribution for a column
+show_distribution <- function(var_data, binwidth) {
+
+  # Get summary statistics by first extracting values from the column
+  min_val <- min(pull(var_data))
+  max_val <- max(pull(var_data))
+  mean_val <- mean(pull(var_data))
+  med_val <- median(pull(var_data))
+  mod_val <- statip::mfv(pull(var_data))
+
+  # Print the stats
+  stats <- glue::glue(
+  "Minimum: {format(round(min_val, 2), nsmall = 2)}
+   Mean: {format(round(mean_val, 2), nsmall = 2)}
+   Median: {format(round(med_val, 2), nsmall = 2)}
+   Mode: {format(round(mod_val, 2), nsmall = 2)}
+   Maximum: {format(round(max_val, 2), nsmall = 2)}"
+  )
+
+  theme_set(theme_light())
+  # Plot the histogram
+  hist_gram <- ggplot(var_data) +
+  geom_histogram(aes(x = pull(var_data)), binwidth = binwidth,
+                 fill = "midnightblue", alpha = 0.7, boundary = 0.4) +
+
+  # Add lines for the statistics
+  geom_vline(xintercept = min_val, color = "gray33",
+ linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = mean_val, color = "cyan",
+ linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = med_val, color = "red",
+ linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = mod_val, color = "yellow",
+ linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = max_val, color = "gray33",
+ linetype = "dashed", size = 1.3) +
+
+  # Add titles and labels
+  ggtitle("Data Distribution") +
+  xlab("") +
+  ylab("Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+  # Plot the box plot
+  bx_plt <- ggplot(data = var_data) +
+  geom_boxplot(mapping = aes(x = pull(var_data), y = 1),
+               fill = "#E69F00", color = "gray23", alpha = 0.7) +
+
+    # Add titles and labels
+  xlab("Value") +
+  ylab("") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+  # To return multiple outputs, use a `list`
+  return(
+
+    list(stats,
+         hist_gram / bx_plt)) # End of returned outputs
+
+} # End of function
+
+```
+
+**Step 3** 
+
+Starting with the `df_flights` data, keep only the **DepDelay** column. Assign this to a variable named `df_col`.
+
+After you have this figured out, call the function `show_distribution` with the argument names and corresponding values `var_data = df_col` and `binwidth = 100`.
+
+From the function output, what's the distribution of **DepDelay** (the number of minutes the departure was delayed)?
+
+Fill in the placeholder `....` with the right code.
+
+```{r}
+# Select DepDelay column
+df_col <- df_flights %>%
+  select(DepDelay)
+
+# Call the function show_distribution
+show_distribution(var_data = df_col, binwidth = 100)
+
+```
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%203.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+Now, let's investigate the distribution of **ArrDelay** (the number of minutes arrival was delayed).
+
+**Step 4** 
+
+Starting with the `df_flights` data, keep only the **ArrDelay** column. Assign this to a variable named `df_col`.
+
+After you have this figured out, call the function `show_distribution` with the argument names and corresponding values `var_data = df_col` and `binwidth = 100` (value of the width of each bin along the x-axis).
+
+From the function output, what's the distribution of **ArrDelay**?
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Select DepDelay column
+df_col <- df_flights %>%
+  select(ArrDelay)
+
+# Call the function show_distribution
+show_distribution(var_data = df_col, binwidth = 100)
+
+
+```
+
+From both outputs, there are outliers at the lower and upper ends of both variables. Let's trim the data so that you include only rows where the values for these fields are within the 1st and 90th percentiles. Let's begin with the **ArrDelay** observation.
+
+```{r}
+# Trim outliers for ArrDelay based on 1st and 90th percentiles
+# Produce quantiles corresponding to 1% and 90%
+arrdelay_01pcntile <- df_flights %>%
+  pull(ArrDelay) %>%
+  quantile(probs = 1 / 100, names = FALSE)
+
+arrdelay_90pcntile <- df_flights %>%
+  pull(ArrDelay) %>%
+  quantile(probs = 90 / 100, names = FALSE)
+
+# Print 1st and 90th quantiles respectively
+cat(arrdelay_01pcntile, "\n", arrdelay_90pcntile)
+
+```
+Now that you have quantiles corresponding to 1% and 90%, let's filter the `df_flights` data to include only rows whose arrival delay falls within this range.
+
+**Step 5** 
+
+Starting with the `df_flights` data, filter to include only rows whose **ArrDelay** falls within the 1st and 90th quantiles. Assign this to a variable named `df_flights`.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Filter data to remove outliers
+df_flights <- df_flights %>%
+  filter(ArrDelay > arrdelay_01pcntile, ArrDelay < arrdelay_90pcntile)
+
+```
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%205.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+Now, let's do the same for the **DepDelay** column.
+
+**Step 6** 
+
+Starting with the `df_flights` data, obtain quantiles that correspond to 1% and 90%. Assign these values to the variables named `depdelay_01pcntile` and `depdelay_90pcntile`, respectively.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Trim outliers for DepDelay based on 1% and 90% percentiles
+# Produce quantiles corresponding to 1% and 90%
+depdelay_01pcntile <- df_flights %>%
+  pull(DepDelay) %>%
+  quantile(probs = 1 / 100, names = FALSE)
+
+depdelay_90pcntile <- df_flights %>%
+  pull(DepDelay) %>%
+  quantile(probs = 90 /100, names = FALSE)
+
+# Print 1st and 90th quantiles respectively
+cat(depdelay_01pcntile, "\n", depdelay_90pcntile)
+```
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%206.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+Good job!
+
+Now that you have quantiles corresponding to 1% and 90%, let's filter the `df_flights` data to include only rows whose departure delay falls within this range.
+
+**Step 7** 
+
+Starting with the `df_flights` data, filter to only include rows whose **DepDelay** falls within 1st and 90th quantiles. Assign this to a variable name `df_flights`.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Filter data to remove outliers
+df_flights <- df_flights %>%
+  filter(DepDelay > depdelay_01pcntile, DepDelay < depdelay_90pcntile)
+```
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%207.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+
+You rock!
+
+Now, you can check the distribution of the two variables with outliers removed.
+```{r}
+# Distribution of DepDelay
+show_distribution(var_data = select(df_flights, DepDelay), binwidth = 2)
+
+```
+
+```{r}
+# Distribution of ArrDelay
+show_distribution(var_data = select(df_flights, ArrDelay), binwidth = 2)
+
+```
+
+
+Much better!
+
+Now that the data is all cleaned up, you can begin doing some exploratory analysis.
+
+## Explore the data
+
+Let's start with an overall view of the summary statistics for the numeric columns.
+```{r}
+# Obtain common summary statistics using summarytools package
+df_flights %>%
+  descr(stats = "common")
+
+```
+
+### What are the mean departure and arrival delays?
+
+**Step 8** 
+
+Starting with the `df_flights` data, use `across()` within `summarize()` to find the mean across the **DepDelay** and **ArrDelay** columns. Assign this to the variable named `df_delays`. What are the mean delays?
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Summarize the departure and arrival delays by finding the mean
+df_delays <- df_flights %>%
+ summarise(across(c(ArrDelay,DepDelay), mean))
+
+df_delays
+
+```
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%208.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+
+### How do the carriers compare in terms of arrival delay performance?
+
+A box plot can be a good way to graphically depict the distribution of groups of numerical data through their quantiles. The `geom` that takes care of box plots is `geom_boxplot`.
+```{r}
+# Compare arrival delay across different carriers
+df_flights %>%
+  ggplot() +
+  geom_boxplot(mapping = aes(x = Carrier, y = ArrDelay))
+
+```
+
+### How do the carriers compare in terms of departure delay performance?
+
+Let's do the same for the departure delay performance.
+
+You can also try to rearrange the `Carrier` levels in ascending order of the delay time and sprinkle some color to the plots, too.
+```{r}
+df_flights %>%
+  mutate(Carrier = fct_reorder(Carrier, DepDelay)) %>%
+  ggplot() +
+  geom_boxplot(mapping = aes(x = Carrier, y = DepDelay, color = Carrier),
+  show.legend = FALSE)
+
+```
+Alternatively, to create the preceding plots, you can use purr::map() to apply a function to each column. See ?map for more details.
+```{r}
+map(df_flights %>% select(ArrDelay, DepDelay), ~ ggplot(df_flights) +
+  geom_boxplot(mapping = aes(x = Carrier, y = .x)) + ylab(""))
+
+```
+
+### Are some days of the week more prone to arrival delays than others?
+
+Again, let's make use of a box plot to visually inspect the distribution of arrival delays according to day of the week. To successfully accomplish this, you first have to encode days of the week as `categorical` variables (that is, `factors`).
+
+```{r}
+# Encode day of the week as a categorical and make boxplots
+df_flights %>%
+  mutate(DayOfWeek = factor(DayOfWeek)) %>%
+  ggplot() +
+  geom_boxplot(mapping = aes(x = DayOfWeek, y = ArrDelay),
+  show.legend = FALSE)
+
+```
+### Are some days of the week more prone to departure delays than others?
+
+Now, over to you.
+
+**Step 9** 
+
+Let's investigate whether some days of the week (x-axis) are more prone to departure delays (y-axis) than others. Start by encoding the day of the week as a categorical variable.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Encode day of the week as a categorical variable
+df_flights <- df_flights %>%
+  mutate(DayOfWeek = factor(DayOfWeek))
+
+# Make a box plot of DayOfWeek and DepDelay
+dep_delay_plot <- df_flights %>%
+  ggplot() +
+  geom_boxplot(mapping = aes(x = DayOfWeek, y = DepDelay, color = DayOfWeek),
+  show.legend = FALSE) +
+  scale_color_brewer(palette = "Dark2")
+
+dep_delay_plot
+
+```
+
+What can you make out of this? Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%209.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+```
+
+Great progress!
+
+### Which departure airport has the highest average departure delay?
+
+To answer this question, you have to group the data by `OriginAirportName`, summarize the observations by the mean of their departure delay `DepDelay`, and then arrange them in descending order of the mean departure delays.
+
+First, put this into code.
+```{r}
+# Use group_by %>% summarize to find airports with highest avg DepDelay
+mean_departure_delays <- df_flights %>%
+  group_by(OriginAirportName) %>%
+  summarize(mean_dep_delay_time = mean(DepDelay)) %>%
+  arrange(desc(mean_dep_delay_time))
+
+# Print the first 7 rows
+mean_departure_delays %>%
+  slice_head(n = 7)
+
+```
+Fantastic!
+
+Now represent this visually by using bar plots.
+```{r}
+mean_departure_delays %>%
+  # Sort factor levels in descending order of delay time
+  mutate(OriginAirportName = fct_reorder(OriginAirportName,
+ desc(mean_dep_delay_time))) %>%
+  ggplot() +
+  geom_col(mapping = aes(x = OriginAirportName, y = mean_dep_delay_time),
+ fill = "midnightblue", alpha = 0.7) +
+  theme(
+    # Rotate X markers so we can read them
+    axis.text.x = element_text(angle = 90)
+  )
+
+```
+
+Could you try to guess why Chicago Airport has the greatest departure delay time or why Long Beach has the least?
+
+### Do late departures tend to result in longer arrival delays than on-time departures?
+
+**Step 10** 
+
+Starting with the `df_flights` data, first encode the **DepDel15** column (a binary indicator that the departure was delayed by more than 15 minutes) as categorical.
+
+Use a box plot to investigate whether late departures (x-axis) tend to result in longer arrival delays (y-axis) than on-time departures. Map the fill aesthetic to the `DepDel15` variable.
+
+> **Tip**:
+> You can color a box plot by using either the `colour` aesthetic (as in previous exercises) or, more usefully, the `fill` aesthetic.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Encode DepDel15 as a categorical variable
+df_flights <- df_flights %>%
+  mutate(DepDel15 = factor(DepDel15))
+
+arr_delay_plot <- df_flights %>%
+  ggplot() +
+  geom_boxplot(mapping <- aes(x = DepDel15, y = ArrDelay, fill = DepDel15))
+
+arr_delay_plot
+```
+
+
+Does this surprise you? Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%2010.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+
+```
+### Which route (from departure airport to destination airport) has the most late arrivals?
+
+Finally, let's investigate travel routes. Start by adding a **Route** column that indicates the departure and destination airports.
+```{r}
+# Add a Route column
+df_flights <- df_flights %>%
+  mutate(Route = paste(OriginAirportName, DestAirportName, sep = ">"))
+
+```
+
+Great! Now you can use `group_by()`, `summarize()`, and `arrange()` to find the routes with the most late arrivals.
+
+```{r}
+# Make grouped summaries to find the total delay
+# associated with a particular route
+df_flights %>%
+  group_by(Route) %>%
+  summarize(ArrDel15 = sum(ArrDel15)) %>%
+  arrange(desc(ArrDel15))
+
+```
+
+### Which route has the highest average arrival delay time?
+
+Over to you!
+
+**Step 11** 
+
+Starting with the `df_flights` data, group the observations by `Route`, and then create a summary tibble with a column name **ArrDelay**, which represents the mean arrival delay time. Arrange this in descending order.
+
+Assign your results to a variable named `df_route_arrdelay`.
+
+Fill in the placeholder `....` with the right code.
+```{r}
+# Create grouped summaries of the arrival delay time
+df_route_arrdelay <- df_flights %>%
+  group_by(Route) %>%
+  summarise(ArrDelay = mean(ArrDelay)) %>%
+  arrange(desc(desc(ArrDelay)))
+
+
+# Print the first 5 rows
+df_route_arrdelay %>%
+  slice_head(n = 5)
+
+```
+
+
+Test your answer:
+```{r}
+testFilePath <- paste(testsFolderPath, "Question%2011.R", sep="", collapse=NULL)
+. <- ottr::check(testFilePath)
+
+```
+
+Congratulations on finishing the first challenge! We'll wrap it at that for now. Of course there are other ways to approach this challenge. Feel free to experiment and share your solutions with friends.
+
+See you in the next module, where we'll get started with machine learning.

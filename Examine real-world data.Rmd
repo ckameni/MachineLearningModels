@@ -1,0 +1,634 @@
+---
+title: "Explore real-world data by using R"
+output:
+  pdf_document: default
+  word_document: default
+date: "2023-02-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Explore real-world data by using R
+
+In your last exercise, you looked at grades for your student data and investigated this visually by using histograms and box plots. Now you'll look into more complex cases, describe the data more fully, and see how to make basic comparisons between data.
+
+### Real-world data distributions
+
+Last time, you looked at grades for your student data and estimated from this sample what the full population of grades might look like. Just to refresh, let's take another look at this data.
+
+
+```{r }
+# Load the required packages into the current R session
+library(tidyverse)
+library(patchwork)
+library(statip)
+library(glue)
+
+```
+
+## Including Plots
+
+Let's take another look at the grades distribution:
+
+```{r }
+# Read a CSV file into a tibble
+df_students <- read_csv(file = "https://raw.githubusercontent.com/MicrosoftDocs/ml-basics/master/data/grades.csv")
+
+# Remove any rows with missing data
+df_students <- df_students %>% 
+  drop_na()
+
+# Add a column "Pass" that specifies whether a student passed or failed
+# Assuming '60' is the grade needed to pass
+df_students <- df_students %>% 
+  mutate(Pass = Grade >= 60)
+
+# Create a function that you can reuse
+show_distribution <- function(var_data, binwidth) {
+  
+  # Get summary statistics by first extracting values from the column
+  min_val <- min(pull(var_data))
+  max_val <- max(pull(var_data))
+  mean_val <- mean(pull(var_data))
+  med_val <- median(pull(var_data))
+  mod_val <- statip::mfv(pull(var_data))
+
+  # Print the stats
+  stats <- glue(
+  'Minimum: {format(round(min_val, 2), nsmall = 2)}
+   Mean: {format(round(mean_val, 2), nsmall = 2)}
+   Median: {format(round(med_val, 2), nsmall = 2)}
+   Mode: {format(round(mod_val, 2), nsmall = 2)}
+   Maximum: {format(round(max_val, 2), nsmall = 2)}'
+  )
+  
+  theme_set(theme_light())
+  # Plot the histogram
+  hist_gram <- ggplot(var_data) +
+  geom_histogram(aes(x = pull(var_data)), binwidth = binwidth,
+                 fill = "midnightblue", alpha = 0.7, boundary = 0.4) +
+    
+  # Add lines for the statistics
+  geom_vline(xintercept = min_val, color = 'gray33', linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = mean_val, color = 'cyan', linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = med_val, color = 'red', linetype = "dashed", size = 1.3 ) +
+  geom_vline(xintercept = mod_val, color = 'yellow', linetype = "dashed", size = 1.3 ) +
+  geom_vline(xintercept = max_val, color = 'gray33', linetype = "dashed", size = 1.3 ) +
+    
+  # Add titles and labels
+  ggtitle('Data Distribution') +
+  xlab('')+
+  ylab('Frequency') +
+  theme(plot.title = element_text(hjust = 0.5))
+  
+  # Plot the box plot
+  bx_plt <- ggplot(data = var_data) +
+  geom_boxplot(mapping = aes(x = pull(var_data), y = 1),
+               fill = "#E69F00", color = "gray23", alpha = 0.7) +
+    
+    # Add titles and labels
+  xlab("Value") +
+  ylab("") +
+  theme(plot.title = element_text(hjust = 0.5))
+  
+  
+  # To return multiple outputs, use a list
+  return(
+    
+    list(stats,
+         hist_gram / bx_plt)) # End of returned outputs
+  
+} # End of function
+
+
+# Call the function
+show_distribution(var_data = select(df_students, Grade), binwidth = 20)
+
+```
+
+As you'll recall, your data had the mean and mode at the center, with data spread symmetrically from there.
+
+Now let's take a look at the distribution of the study hours data.
+```{r}
+# Get the variable to examine
+col <- df_students %>% 
+  select(StudyHours)
+
+# Call the function
+show_distribution(var_data = col, binwidth = 2)
+
+```
+The distributions of the study time data and the grades data differ significantly.
+
+Note that the whiskers of the box plot begin at only about 6.0, indicating that the vast majority of the first quarter of the data is greater than this value. The minimum is marked with an o, indicating that it's statistically an outlier, a value that lies significantly outside the range of the rest of the distribution.
+
+Outliers can occur for many reasons. Maybe a student meant to record 10 hours of study time, but entered 1 and omitted the 0. Or maybe the student is abnormally lazy when it comes to putting in study time. Either way, the low number is a statistical anomaly that doesn't represent a typical student. Let's see what the distribution looks like without it.
+```{r}
+# Get the variable to examine without outliers
+# You'll only get students who have studied more than one hour
+col <- df_students %>% 
+  select(StudyHours) %>% 
+  filter(StudyHours > 1)
+
+
+# Call the function
+show_distribution(var_data = col, binwidth = 2.4)
+
+```
+For learning purposes, you've just treated the value 1 as a true outlier here and excluded it. In the real world, though, it would be unusual to exclude data at the extremes without more justification when your sample size is so small. This is because the smaller your sample size, the more likely it is that your sampling is a misrepresentation of the whole population (here, the population means grades for all students, not just the 22 in our sample). For example, if you were to sample study time for another 1000 students, you might find that it's actually quite common to not study much.
+
+When you have more data available, your sample becomes more reliable. This makes it easier to consider outliers as being *values that fall below or above percentiles within which most of the data lie*. For example, the following code uses the inbuilt `stats::quantile()` function to exclude observations below the 0.01th percentile (the value above which 99 percent of the data resides).
+
+```{r}
+# Produce a quantile corresponding to 1%
+q01 <- df_students %>% 
+  pull(StudyHours) %>% 
+  quantile(probs = 1/100, names = FALSE)
+
+# Get the variable to examine
+col <- df_students %>% 
+  select(StudyHours) %>% 
+  filter(StudyHours > q01)
+  
+# Call the function
+show_distribution(var_data = col, binwidth = 2.4)
+
+```
+> **Tip**:
+> You can also eliminate outliers at the upper end of the distribution by defining a threshold at a high percentile value. For example, you could use the `stats::quantile()` function to find the 0.99 percentile below which 99 percent of the data reside.
+
+With the outliers removed, the box plot shows all data within the four quartiles. Note that the distribution is not symmetric, as it is for the grade data. Some students have very high study times of around 16 hours, but the bulk of the data is between 7 and 13 hours, The few extremely high values pull the mean toward the higher end of the scale.
+
+Let's look at the density for this distribution.
+
+```{r}
+# Create a function that returns a density plot
+show_density <- function(var_data) {
+  
+  # Get statistics
+  mean_val <- mean(pull(var_data))
+  med_val <- median(pull(var_data))
+  mod_val <- statip::mfv(pull(var_data))
+  
+  
+  # Plot the density plot
+  density_plot <- ggplot(data = var_data) +
+  geom_density(aes(x = pull(var_data)), fill="orangered", color="white", alpha=0.4) +
+    
+  # Add lines for the statistics
+  geom_vline(xintercept = mean_val, color = 'cyan', linetype = "dashed", size = 1.3) +
+  geom_vline(xintercept = med_val, color = 'red', linetype = "dashed", size = 1.3 ) +
+  geom_vline(xintercept = mod_val, color = 'yellow', linetype = "dashed", size = 1.3 ) +
+    
+  # Add titles and labels
+  ggtitle('Data Density') +
+  xlab('') +
+  ylab('Density') +
+  theme(plot.title = element_text(hjust = 0.5))
+  
+  
+  
+  return(density_plot) # End of returned outputs
+  
+} # End of function
+
+
+# Get the density of StudyHours
+show_density(var_data = col)
+
+```
+This kind of distribution is called *right skewed*. The mass of the data is on the left side of the distribution, creating a long tail to the right because of the values at the extreme high end, which pulls the mean to the right.
+
+#### Measures of variance
+
+So now you have a good idea where the middle of the grade and study hours data distributions are. However, there's another aspect of the distributions you should examine: how much variability is there in the data?
+
+Typical statistics that measure variability in the data include:
+
+-   **Range**: The difference between the maximum and minimum. There's no built-in function for this, but it's easy to calculate by using the *min* and *max* functions. Another approach would be to use Base R's `base::range()` which returns a vector containing the *minimum* and *maximum* of all the given arguments. Wrapping this in `base::diff()` will get you well on your way to finding the range.
+
+-   **Variance**: The average of the squared difference from the mean. You can use the built-in *var* function to find this.
+
+-   **Standard deviation**: The square root of the variance. You can use the built-in *sd* function to find this.
+
+```{r}
+# Select columns to analyze the measure of variance
+cols <- df_students %>%
+  select(c(Grade, StudyHours))
+
+# Apply a function to each column in cols
+map(cols, function(column){
+  rng <- diff(range(column)) # --> same as: max(column) - min(column)
+  var <- var(column)
+  std <- sd(column)
+  glue(
+  '
+  - Range: {format(round(rng, 2), nsmall = 2)}
+  - Variance : {format(round(var, 2), nsmall = 2)}
+  - Std.Dev : {format(round(std, 2), nsmall = 2)}',
+  .sep = '\n')
+})
+
+```
+> By using [`map()`](https://purrr.tidyverse.org/reference/map.html) functions, you can replace many `for` loops with code that's both more succinct and easier to read.
+
+Of these statistics, the standard deviation is ordinarily the most useful. It provides a measure of variance in the data on the same scale as the data itself (grade points for the grades distribution and hours for the study hours distribution). The greater the standard deviation, the more variance there is when you compare values in the distribution with the distribution mean. That is, the data is more spread out.
+
+When you're working with a *normal* distribution, the standard deviation works with the particular characteristics of a normal distribution to provide even greater insight. This can be summarized by using the `68–95–99.7 rule`, also known as the `empirical rule`, which is described as follows:
+
+In any normal distribution:
+
+-   Approximately 68.26 percent of values fall within one standard deviation from the mean.
+-   Approximately 95.45 percent of values fall within two standard deviations from the mean.
+-   Approximately 99.73 percent of values fall within three standard deviations from the mean.
+
+As a quick detour, let's verify that the distribution of grades follows a normal distribution.
+
+
+```{r}
+# Get the variable to examine
+col <- df_students %>% 
+  select(Grade)
+
+# Get the mean grade
+mean_grade <- mean(pull(col))
+
+# Get the standard deviation of grades
+std_dev <- sd(pull(col))
+
+# Find proportion that will fall within 1 standard deviation
+one_std_dev <- pnorm((mean_grade + std_dev), mean = mean_grade, sd = std_dev) -
+  pnorm((mean_grade - std_dev), mean = mean_grade, sd = std_dev)
+
+# Find proportion that will fall within 2 standard deviations
+two_std_dev <- pnorm((mean_grade + (2*std_dev)), mean = mean_grade, sd = std_dev) - 
+  pnorm((mean_grade - (2*std_dev)), mean = mean_grade, sd = std_dev)
+
+# Find proportion that will fall within 3 standard deviations
+three_std_dev <- pnorm((mean_grade + (3*std_dev)), mean = mean_grade, sd = std_dev) - 
+  pnorm((mean_grade - (3*std_dev)), mean = mean_grade, sd = std_dev)
+
+glue(
+  '
+  {format(round(one_std_dev*100, 2), nsmall = 2)}% of grades fall within one standard deviation from the mean.
+  {format(round(two_std_dev*100, 2), nsmall = 2)}% of grades fall within one standard deviation from the mean.
+  {format(round(three_std_dev*100, 2), nsmall = 2)}% of grades fall within one standard deviation from the mean.
+  
+  '
+)
+
+```
+There's no doubt that the grades distribution follows a normal distribution.
+
+It wouldn't hurt to show this graphically, right? Instead of using `geom_density`, let's manually calculate the density of the `Grade` column and then use the results to whip up a density plot. We'll then fill the density plot depending on the number of standard deviations from the mean.
+
+```{r}
+# Get the Grade column
+col <- df_students %>% 
+  select(Grade)
+
+# Compute kernel density estimates
+density <- density(pull(col), kernel = "gaussian")
+
+# Create a dataframe containing coordinates where density is estimated
+#and the corresponding estimated value
+density_xy <- tibble(
+  x = density$x,
+  y = density$y
+)
+
+# Make density plots for various deviations of the mean
+
+plt_sd_1 <- density_xy %>%
+  ggplot(mapping = aes(x = x, y = y)) +
+  geom_line() +
+  geom_area(mapping = aes(x = ifelse(x>(mean_grade-std_dev) & x<(mean_grade+std_dev), x, 0)), fill = "darkorange", alpha = 0.8) +
+  annotate("text", x = 50, y = 0.01, label = "1 std (68.26%)") +
+  xlim(1, max(col))+
+  geom_vline(xintercept = mean_grade, linetype = "dashed") +
+  labs(x = "", y = "Density")
+
+
+# 2 std deviations from the mean
+plt_sd_2 <- density_xy %>%
+  ggplot(mapping = aes(x = x, y = y)) +
+  geom_line() +
+  geom_area(mapping = aes(x = ifelse(x>(mean_grade-(2*std_dev)) & x<(mean_grade+(2*std_dev)), x, 0)), fill = "purple", alpha = 0.7) +
+  annotate("text", x = 50, y = 0.01, label = "2 std (95.45%)") +
+  xlim(1, max(col)) +
+  geom_vline(xintercept = mean_grade, linetype = "dashed") +
+  labs(x = "", y = "")
+
+
+# 3 std deviations from the mean
+plt_sd_3 <- density_xy %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_line() +
+  geom_area(mapping = aes(x = ifelse(x>(mean_grade-(3*std_dev)) & x<(mean_grade+(3*std_dev)), x, 0)), fill = "cyan4", alpha = 0.5) +
+  annotate("text", x = 50, y = 0.01, label = "3 std (99.73%)") +
+  xlim(1, max(col)) +
+  geom_vline(xintercept = mean_grade, linetype = "dashed") +
+  labs(x = "Grade", y = "")
+
+
+
+# Patching things up
+plt_sd_1| (plt_sd_2/plt_sd_3) 
+
+```
+
+Because you know that the mean grade is `49.18`, the standard deviation is `21.74`, and distribution of grades is `normal`, you can calculate that `68.26%` of students should achieve a grade between `27.44` and `70.92`, as shown in the first plot in the preceding code.
+
+The descriptive statistics you've used to understand the distribution of the student data variables are the basis of statistical analysis. Because they're such an important part of exploring your data, there's a built-in Base R function, `base::summary()`, that returns the result summaries of the results of various objects that are passed to it.
+
+```{r}
+# Get summary stats of the data frame
+summary(df_students)
+```
+
+
+Of course, because of the need for much more robust data exploration and reporting, many packages have been developed for summarizing data.
+
+A good example would be the [summarytools](https://github.com/dcomtois/summarytools) package. `summarytools::descr()` does a remarkable job of finding statistics for numerical data.
+
+```{r}
+# Get descriptive stats using summary tools package
+library(summarytools)
+descr(
+  df_students,
+  stats = "common"
+)
+
+```
+### Compare data
+
+Now that you know something about the statistical distribution of the data in your dataset, you're ready to examine it to identify any apparent relationships between variables.
+
+First of all, remove any rows that contain outliers so that you have a sample that's representative of a typical class of students. You identified that the StudyHours column contains some outliers with extremely low values, so you can remove those rows.
+
+```{r}
+# Filter to remove outliers
+df_sample <- df_students %>% 
+  filter(StudyHours > 1)
+
+```
+
+The data includes two *numeric* variables (`StudyHours` and `Grade`) and two *categorical* variables (`Name` and `Pass`). In R, categorical variables are usually saved as [factors](https://r4ds.had.co.nz/factors.html) or character vectors.
+
+Let's start by comparing the `numeric` *StudyHours* column with the `categorical` *Pass* column to see whether there's an apparent relationship between the number of hours studied and a passing grade.
+
+To make this comparison, you can create box plots that show the distribution of StudyHours for each possible Pass value (TRUE and FALSE).
+```{r}
+# Plot a box plot comparing StudyHours and Pass
+df_sample %>% 
+  ggplot() +
+  geom_boxplot(mapping = aes(x = Pass, y = StudyHours, fill = Pass), color = "gray23", alpha = 0.7) +
+  scale_fill_brewer(palette = "Set1") +
+  
+# Add titles and labels
+  ggtitle("Comparing Pass status and the Study hours")+
+  xlab("Pass")+
+  ylab("Study Hours")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+When you compare the StudyHours distributions, it's immediately apparent, if not particularly surprising, that students who passed the course tended to study for more hours than students who didn't pass. If you want to predict whether students are likely to pass the course, the amount of time they spend studying might be a good predictive feature.
+
+### Compare numeric variables
+
+Now let's compare two numeric variables. Start by creating a bar chart that shows both grades and study hours.
+
+To do this, you can first transform your data to a `long` format by using `tidyr::pivot_longer()` and then play around with the `fill` aesthetic and `position_dodge()` to place overlapping objects directly *beside* one another.
+
+Also, we'll try out [the paletter gallery](https://pmassicotte.github.io/paletteer_gallery/), a collection of color palettes in a single R package.
+
+```{r}
+# Pivot data from wide to long
+df_sample_long <- df_sample %>%
+  select(-Pass) %>%
+  mutate(Name = fct_reorder(Name, Grade, .desc = TRUE)) %>% 
+  pivot_longer(!Name, names_to = "Metrics", values_to = "Values")
+
+# Show first 10 rows
+df_sample_long %>% 
+  slice_head(n = 10)
+
+```
+
+```{r}
+# Try out some color palettes
+library(paletteer)
+
+# Compare numeric variables with bar plots
+ggplot(data = df_sample_long) +
+  geom_bar(mapping = aes(x = Name, y = Values, fill = Metrics), alpha = 0.7, stat = "identity", position = position_dodge(width = 0.9)) +
+  xlab('Student') +
+  ylab('') +
+  scale_fill_paletteer_d("calecopal::kelp1") +
+  theme(
+    panel.grid = element_blank(),
+    panel.grid.major.y = element_line(color = '#95a5a6',
+                                      linetype = 'dashed',
+                                      size = 0.5),
+    axis.text.x = element_text(angle = 90),
+    legend.title = element_blank()
+    
+  )
+
+```
+
+
+The chart shows bars for both the grade and study hours for each student. They're not easy to compare, because the values are on different scales. Grades are measured in grade points, which range from 3 to 97, and study time is measured in hours, which range from 1 to 16.
+
+A common technique when you're dealing with numeric data in different scales is to *normalize* the data so that the values retain their proportional distribution, but are measured on the same scale. To do this, you use a technique called *`MinMax`*`scaling`, which distributes the values proportionally on a scale from 0 to 1. You could write the code to apply this transformation, but the [scales](https://scales.r-lib.org/) library provides a scaler, `scales::rescale()`, that does it for you.
+
+The good news is that the scaler is installed when you install ggplot2 or the Tidyverse.
+```{r}
+# Load the scales package
+library(scales)
+
+# Normalize the numeric columns
+# group_by ensures that StudyHours and Grade are normalized independently
+df_normalized <- df_sample_long %>% 
+  group_by(Metrics) %>% 
+  mutate(Values = rescale(Values, to = c(0, 1)))
+
+# Show some of the normalized data
+df_normalized %>% 
+  slice_head(n = 5)
+
+```
+Great! Your grades and study hours are now rescaled.
+```{r}
+# Compare numeric variables with bar plots
+ggplot(data = df_normalized) +
+  geom_bar(mapping = aes(x = Name, y = Values, fill = Metrics), alpha = 0.7, stat = "identity", position = position_dodge(width = 0.9)) +
+  xlab('Student') +
+  ylab('') +
+  scale_fill_paletteer_d("calecopal::kelp1") +
+  theme(
+    panel.grid = element_blank(),
+    panel.grid.major.y = element_line(color = '#95a5a6',
+                                      linetype = 'dashed',
+                                      size = 0.5),
+    axis.text.x = element_text(angle = 90),
+    legend.title = element_blank()
+    
+  )
+
+```
+With the data normalized, it's easier to see an apparent relationship between grades and study time. It's not an exact match, but it seems clear that students with higher grades tend to have studied more.
+
+### Fitting a simple linear regression model
+
+From the previous comparisons, there seems to be a correlation between study times and grades. In fact, there's a statistical *correlation* measurement that you can use to quantify the relationship between these columns.
+
+```{r}
+# Compute Pearson Product Moment correlation coefficient
+cor(df_sample$StudyHours, df_sample$Grade)
+
+```
+
+
+The correlation statistic is a value from -1 to 1 that indicates the strength of a relationship. Values greater than 0 indicate a *positive* correlation (high values of one variable tend to coincide with high values of the other), while values less than 0 indicate a *negative* correlation (high values of one variable tend to coincide with low values of the other). A correlation equal to 0 indicates that there is no relationship between the two variables. In this case, the correlation value is close to 1, which shows a strong positive correlation between study times and grades.
+
+> **Note**:
+> Data scientists often quote the maxim "correlation is not causation." In other words, as tempting as it might be, you shouldn't interpret the statistical correlation as explaining *why* one of the values is high. In the case of the student data, the statistic demonstrates that students with high grades tend to have studied a great number of hours.But this is not the same as saying that they achieved high grades *because* they studied a lot. The statistic could equally be used as evidence to support the nonsensical conclusion that the students studied a lot *because* their grades were going to be high.
+
+Another way to visualize the apparent correlation between two numeric columns is to use a *scatter* plot. With `geom_point`, you'll be well on your way to whipping up a neat scatterplot.
+
+```{r}
+# Create a scatter plot of study hours and grade
+df_sample %>% 
+  ggplot(aes(x = StudyHours, y = Grade)) +
+  geom_point() +
+  ggtitle('Study Time vs Grade') +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+Again, it looks like there's a discernible pattern in which the students who studied the most hours are also the students who got the highest grades.
+
+You can see this more clearly by adding to the plot a *regression* line (or a *line of best fit*) that shows the general trend in the data. To do this, you can use a statistical technique called *least squares regression*.
+
+> **Warning: math ahead!** 
+>
+> Cast your mind back to when you were learning how to solve linear equations in school, and recall that the *slope-intercept* form of a linear equation looks like this:
+>
+> `y = mx + b`. 
+>
+> In this equation, *y* and *x* are the coordinate variables, *m* is the slope of the line, and *b* is the y-intercept (where the line goes through the y-axis). 
+>
+> In the case of your scatter plot for our student data, you already have values for *x* (*StudyHours*) and *y* (*Grade*), so you need only calculate the intercept and slope of the straight line that lies closest to those points. Then you can form a linear equation that calculates a new *y* value on that line for each of your *x* values. To avoid confusion, let's call this new *y* value *f(x)*, because it's the output from a linear equation ***f***unction based on *x*. The difference between the original *y* (*Grade*) value and the *f(x)* value is the *error* between the regression line and the actual *Grade* achieved by the student. Your goal is to calculate the slope and intercept for a line with the lowest overall error. 
+>
+> Specifically, you define the overall error by taking the error for each point, squaring it, and adding all the squared errors together. The line of best fit is the line that gives you the lowest value for the sum of the squared errors, hence the name *least squares regression*.
+
+Fortunately, you don't need to code the regression calculation yourself. The inbuilt R Stats Package *stats* provides the `lm()` function to do the hard work for you. `lm()` takes a formula of the form:
+
+`outcome ~ predictor`
+
+This returns, among other things, the coefficients you need for the slope equation, slope (*m*) and intercept (*b*), based on a specified pair of variable samples you want to compare.
+
+```{r}
+# Drop all columns except Grade and StudyHours
+df_regression <- df_sample %>% 
+  select(c(Grade, StudyHours))
+
+# Fit a linear model
+lm_df_regression <- lm(Grade ~ StudyHours, data = df_regression)
+
+# Get the regression slope and intercept
+intercept_b <- lm_df_regression$coefficients[1]
+slope_m <- lm_df_regression$coefficients[2]
+glue(
+  'slope: {format(round(slope_m, 4), nsmall = 4)}
+  y-intercept: {format(round(intercept_b, 4), nsmall = 4)}
+  so…
+   f(x) = {format(round(slope_m, 4), nsmall = 4)}x + {format(round(intercept_b, 4), nsmall = 4)}'
+)
+
+```
+Now that you have the equation f(x) = `r round(slope_m,4)`x + `r round(intercept_b,4)` of the least squares regression line, you can use it to estimate the grade based on the amount of hours spent studying.
+```{r}
+# Use the function (mx + b) to calculate f(x) for each x (StudyHours) value
+df_regression <- df_regression %>% 
+  mutate(fx = (slope_m * StudyHours + intercept_b),
+         error = fx - Grade)
+
+
+# Show data frame
+df_regression
+
+```
+
+You now have a data frame that contains the following values:
+
+- The *StudyHours* for each student
+- The *Grade* achieved by each student
+- The *f(x)* value, calculated by using the regression line coefficients
+- The *error* between the calculated *f(x)* value and the actual *Grade* value.
+
+Some of the errors, particularly at the extreme ends, are quite large (up to over 17.5 grade points). In general, though, the line is pretty close to the actual grades.
+
+Now it's time to show this visually. You'll create the scatter plot of the sample study hours and grades, as before, and then add a line of best fit based on the least squares regression coefficients.
+
+```{r}
+df_sample %>% 
+  ggplot() +
+  geom_point(aes(x = StudyHours, y = Grade)) +
+  # Add a line based on the linear model
+  geom_abline(intercept = intercept_b, slope = slope_m, color = "springgreen3", size = 1) +
+  ggtitle('Study Time vs Grade') +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+### Use the regression coefficients for prediction
+
+Now that you have the regression coefficients for the study time and grade relationship, you can use them in a function to estimate the expected grade for a specified amount of study time.
+
+```{r}
+# Define a function based on our regression coefficients
+f <- function(x) {
+  slope_m <-  6.3134
+  y_intercept_b <-  -17.9164
+  # y = mx + b
+  fx <-  slope_m * x + y_intercept_b
+  return(fx)
+}
+
+# Assume the student studied for 14 hours per week
+study_time <-  14
+
+# Get f(x) for study time
+prediction <- f(x = study_time)
+
+# Grade can't be less than 0 or more than 100
+expected_grade <- max(0, min(100, prediction))
+
+# Print the estimated grade
+glue(
+  'Studying for {study_time} hours per week may result in a grade of {format(round(expected_grade))}
+  ')
+
+```
+By applying statistics to sample data, you've determined a relationship between study time and grade. And you've encapsulated that relationship in a general function that can be used to predict a grade for a given amount of study time.
+
+This technique is in fact the basic premise of machine learning. You can take a set of sample data that includes one or more *features* (in this case, the number of hours studied) and a known *label* value (in this case, the grade achieved) and use the sample data to derive a function that calculates predicted label values for any specified set of features.
+
+## Summary
+
+In this exercise, you've learned:
+
+- What outliers are and how to remove them
+- How data can be skewed
+- How to look at the spread of data
+- Basic ways to compare variables, such as grades and study time
+
+## Further reading
+
+To learn more about the R packages you explored in this notebook, see:
+
+-   [Tidyverse packages](https://www.tidyverse.org/packages/)
+-   [R for Data Science: Visualize, Model, Transform, Tidy, and Import Data](https://r4ds.had.co.nz/) by H. Wickham and G. Grolemund
+

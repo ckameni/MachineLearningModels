@@ -1,0 +1,1285 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Explore real-world data by using R},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Explore real-world data by using R}
+\author{}
+\date{\vspace{-2.5em}2023-02-28}
+
+\begin{document}
+\maketitle
+
+\hypertarget{explore-real-world-data-by-using-r}{%
+\subsection{Explore real-world data by using
+R}\label{explore-real-world-data-by-using-r}}
+
+In your last exercise, you looked at grades for your student data and
+investigated this visually by using histograms and box plots. Now you'll
+look into more complex cases, describe the data more fully, and see how
+to make basic comparisons between data.
+
+\hypertarget{real-world-data-distributions}{%
+\subsubsection{Real-world data
+distributions}\label{real-world-data-distributions}}
+
+Last time, you looked at grades for your student data and estimated from
+this sample what the full population of grades might look like. Just to
+refresh, let's take another look at this data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the required packages into the current R session}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.0     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.1     v tibble    3.1.8
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(statip)}
+\FunctionTok{library}\NormalTok{(glue)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{including-plots}{%
+\subsection{Including Plots}\label{including-plots}}
+
+Let's take another look at the grades distribution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read a CSV file into a tibble}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"https://raw.githubusercontent.com/MicrosoftDocs/ml{-}basics/master/data/grades.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 24 Columns: 3
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Name
+## dbl (2): StudyHours, Grade
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove any rows with missing data}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{()}
+
+\CommentTok{\# Add a column "Pass" that specifies whether a student passed or failed}
+\CommentTok{\# Assuming \textquotesingle{}60\textquotesingle{} is the grade needed to pass}
+\NormalTok{df\_students }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Pass =}\NormalTok{ Grade }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{)}
+
+\CommentTok{\# Create a function that you can reuse}
+\NormalTok{show\_distribution }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(var\_data, binwidth) \{}
+  
+  \CommentTok{\# Get summary statistics by first extracting values from the column}
+\NormalTok{  min\_val }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  max\_val }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  med\_val }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mod\_val }\OtherTok{\textless{}{-}}\NormalTok{ statip}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+
+  \CommentTok{\# Print the stats}
+\NormalTok{  stats }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}Minimum: \{format(round(min\_val, 2), nsmall = 2)\}}
+\StringTok{   Mean: \{format(round(mean\_val, 2), nsmall = 2)\}}
+\StringTok{   Median: \{format(round(med\_val, 2), nsmall = 2)\}}
+\StringTok{   Mode: \{format(round(mod\_val, 2), nsmall = 2)\}}
+\StringTok{   Maximum: \{format(round(max\_val, 2), nsmall = 2)\}\textquotesingle{}}
+\NormalTok{  )}
+  
+  \FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_light}\NormalTok{())}
+  \CommentTok{\# Plot the histogram}
+\NormalTok{  hist\_gram }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data)), }\AttributeTok{binwidth =}\NormalTok{ binwidth,}
+                 \AttributeTok{fill =} \StringTok{"midnightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{boundary =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add lines for the statistics}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ min\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}cyan\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ med\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mod\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ max\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}gray33\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Data Distribution\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  \CommentTok{\# Plot the box plot}
+\NormalTok{  bx\_plt }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data), }\AttributeTok{y =} \DecValTok{1}\NormalTok{),}
+               \AttributeTok{fill =} \StringTok{"\#E69F00"}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray23"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+    
+    \CommentTok{\# Add titles and labels}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Value"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  
+  \CommentTok{\# To return multiple outputs, use a list}
+  \FunctionTok{return}\NormalTok{(}
+    
+    \FunctionTok{list}\NormalTok{(stats,}
+\NormalTok{         hist\_gram }\SpecialCharTok{/}\NormalTok{ bx\_plt)) }\CommentTok{\# End of returned outputs}
+  
+\NormalTok{\} }\CommentTok{\# End of function}
+
+
+\CommentTok{\# Call the function}
+\FunctionTok{show\_distribution}\NormalTok{(}\AttributeTok{var\_data =} \FunctionTok{select}\NormalTok{(df\_students, Grade), }\AttributeTok{binwidth =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+\end{verbatim}
+
+\begin{verbatim}
+## [[1]]
+## Minimum: 3.00
+## Mean: 49.18
+## Median: 49.50
+## Mode: 50.00
+## Maximum: 97.00
+## 
+## [[2]]
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+As you'll recall, your data had the mean and mode at the center, with
+data spread symmetrically from there.
+
+Now let's take a look at the distribution of the study hours data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the variable to examine}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(StudyHours)}
+
+\CommentTok{\# Call the function}
+\FunctionTok{show\_distribution}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col, }\AttributeTok{binwidth =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## Minimum: 1.00
+## Mean: 10.52
+## Median: 10.00
+## Mode: 9.00
+## Maximum: 16.00
+## 
+## [[2]]
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-3-1.pdf}
+The distributions of the study time data and the grades data differ
+significantly.
+
+Note that the whiskers of the box plot begin at only about 6.0,
+indicating that the vast majority of the first quarter of the data is
+greater than this value. The minimum is marked with an o, indicating
+that it's statistically an outlier, a value that lies significantly
+outside the range of the rest of the distribution.
+
+Outliers can occur for many reasons. Maybe a student meant to record 10
+hours of study time, but entered 1 and omitted the 0. Or maybe the
+student is abnormally lazy when it comes to putting in study time.
+Either way, the low number is a statistical anomaly that doesn't
+represent a typical student. Let's see what the distribution looks like
+without it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the variable to examine without outliers}
+\CommentTok{\# You\textquotesingle{}ll only get students who have studied more than one hour}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(StudyHours) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(StudyHours }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{)}
+
+
+\CommentTok{\# Call the function}
+\FunctionTok{show\_distribution}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col, }\AttributeTok{binwidth =} \FloatTok{2.4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## Minimum: 6.00
+## Mean: 10.98
+## Median: 10.00
+## Mode: 9.00
+## Maximum: 16.00
+## 
+## [[2]]
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-4-1.pdf}
+For learning purposes, you've just treated the value 1 as a true outlier
+here and excluded it. In the real world, though, it would be unusual to
+exclude data at the extremes without more justification when your sample
+size is so small. This is because the smaller your sample size, the more
+likely it is that your sampling is a misrepresentation of the whole
+population (here, the population means grades for all students, not just
+the 22 in our sample). For example, if you were to sample study time for
+another 1000 students, you might find that it's actually quite common to
+not study much.
+
+When you have more data available, your sample becomes more reliable.
+This makes it easier to consider outliers as being \emph{values that
+fall below or above percentiles within which most of the data lie}. For
+example, the following code uses the inbuilt \texttt{stats::quantile()}
+function to exclude observations below the 0.01th percentile (the value
+above which 99 percent of the data resides).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Produce a quantile corresponding to 1\%}
+\NormalTok{q01 }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(StudyHours) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{quantile}\NormalTok{(}\AttributeTok{probs =} \DecValTok{1}\SpecialCharTok{/}\DecValTok{100}\NormalTok{, }\AttributeTok{names =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Get the variable to examine}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(StudyHours) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(StudyHours }\SpecialCharTok{\textgreater{}}\NormalTok{ q01)}
+  
+\CommentTok{\# Call the function}
+\FunctionTok{show\_distribution}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col, }\AttributeTok{binwidth =} \FloatTok{2.4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## Minimum: 6.00
+## Mean: 10.98
+## Median: 10.00
+## Mode: 9.00
+## Maximum: 16.00
+## 
+## [[2]]
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-5-1.pdf}
+\textgreater{} \textbf{Tip}: \textgreater{} You can also eliminate
+outliers at the upper end of the distribution by defining a threshold at
+a high percentile value. For example, you could use the
+\texttt{stats::quantile()} function to find the 0.99 percentile below
+which 99 percent of the data reside.
+
+With the outliers removed, the box plot shows all data within the four
+quartiles. Note that the distribution is not symmetric, as it is for the
+grade data. Some students have very high study times of around 16 hours,
+but the bulk of the data is between 7 and 13 hours, The few extremely
+high values pull the mean toward the higher end of the scale.
+
+Let's look at the density for this distribution.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a function that returns a density plot}
+\NormalTok{show\_density }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(var\_data) \{}
+  
+  \CommentTok{\# Get statistics}
+\NormalTok{  mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  med\_val }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+\NormalTok{  mod\_val }\OtherTok{\textless{}{-}}\NormalTok{ statip}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(}\FunctionTok{pull}\NormalTok{(var\_data))}
+  
+  
+  \CommentTok{\# Plot the density plot}
+\NormalTok{  density\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ var\_data) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{pull}\NormalTok{(var\_data)), }\AttributeTok{fill=}\StringTok{"orangered"}\NormalTok{, }\AttributeTok{color=}\StringTok{"white"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add lines for the statistics}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}cyan\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ med\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mod\_val, }\AttributeTok{color =} \StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{ ) }\SpecialCharTok{+}
+    
+  \CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Data Density\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Density\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+  
+  
+  
+  \FunctionTok{return}\NormalTok{(density\_plot) }\CommentTok{\# End of returned outputs}
+  
+\NormalTok{\} }\CommentTok{\# End of function}
+
+
+\CommentTok{\# Get the density of StudyHours}
+\FunctionTok{show\_density}\NormalTok{(}\AttributeTok{var\_data =}\NormalTok{ col)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-6-1.pdf}
+This kind of distribution is called \emph{right skewed}. The mass of the
+data is on the left side of the distribution, creating a long tail to
+the right because of the values at the extreme high end, which pulls the
+mean to the right.
+
+\hypertarget{measures-of-variance}{%
+\paragraph{Measures of variance}\label{measures-of-variance}}
+
+So now you have a good idea where the middle of the grade and study
+hours data distributions are. However, there's another aspect of the
+distributions you should examine: how much variability is there in the
+data?
+
+Typical statistics that measure variability in the data include:
+
+\begin{itemize}
+\item
+  \textbf{Range}: The difference between the maximum and minimum.
+  There's no built-in function for this, but it's easy to calculate by
+  using the \emph{min} and \emph{max} functions. Another approach would
+  be to use Base R's \texttt{base::range()} which returns a vector
+  containing the \emph{minimum} and \emph{maximum} of all the given
+  arguments. Wrapping this in \texttt{base::diff()} will get you well on
+  your way to finding the range.
+\item
+  \textbf{Variance}: The average of the squared difference from the
+  mean. You can use the built-in \emph{var} function to find this.
+\item
+  \textbf{Standard deviation}: The square root of the variance. You can
+  use the built-in \emph{sd} function to find this.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select columns to analyze the measure of variance}
+\NormalTok{cols }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(Grade, StudyHours))}
+
+\CommentTok{\# Apply a function to each column in cols}
+\FunctionTok{map}\NormalTok{(cols, }\ControlFlowTok{function}\NormalTok{(column)\{}
+\NormalTok{  rng }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(column)) }\CommentTok{\# {-}{-}\textgreater{} same as: max(column) {-} min(column)}
+\NormalTok{  var }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(column)}
+\NormalTok{  std }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(column)}
+  \FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}}
+\StringTok{  {-} Range: \{format(round(rng, 2), nsmall = 2)\}}
+\StringTok{  {-} Variance : \{format(round(var, 2), nsmall = 2)\}}
+\StringTok{  {-} Std.Dev : \{format(round(std, 2), nsmall = 2)\}\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{.sep =} \StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Grade
+## - Range: 94.00
+## - Variance : 472.54
+## - Std.Dev : 21.74
+## 
+## $StudyHours
+## - Range: 15.00
+## - Variance : 12.16
+## - Std.Dev : 3.49
+\end{verbatim}
+
+\begin{quote}
+By using
+\href{https://purrr.tidyverse.org/reference/map.html}{\texttt{map()}}
+functions, you can replace many \texttt{for} loops with code that's both
+more succinct and easier to read.
+\end{quote}
+
+Of these statistics, the standard deviation is ordinarily the most
+useful. It provides a measure of variance in the data on the same scale
+as the data itself (grade points for the grades distribution and hours
+for the study hours distribution). The greater the standard deviation,
+the more variance there is when you compare values in the distribution
+with the distribution mean. That is, the data is more spread out.
+
+When you're working with a \emph{normal} distribution, the standard
+deviation works with the particular characteristics of a normal
+distribution to provide even greater insight. This can be summarized by
+using the \texttt{68–95–99.7\ rule}, also known as the
+\texttt{empirical\ rule}, which is described as follows:
+
+In any normal distribution:
+
+\begin{itemize}
+\tightlist
+\item
+  Approximately 68.26 percent of values fall within one standard
+  deviation from the mean.
+\item
+  Approximately 95.45 percent of values fall within two standard
+  deviations from the mean.
+\item
+  Approximately 99.73 percent of values fall within three standard
+  deviations from the mean.
+\end{itemize}
+
+As a quick detour, let's verify that the distribution of grades follows
+a normal distribution.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the variable to examine}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Grade)}
+
+\CommentTok{\# Get the mean grade}
+\NormalTok{mean\_grade }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(col))}
+
+\CommentTok{\# Get the standard deviation of grades}
+\NormalTok{std\_dev }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(}\FunctionTok{pull}\NormalTok{(col))}
+
+\CommentTok{\# Find proportion that will fall within 1 standard deviation}
+\NormalTok{one\_std\_dev }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{+}\NormalTok{ std\_dev), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev) }\SpecialCharTok{{-}}
+  \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{{-}}\NormalTok{ std\_dev), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev)}
+
+\CommentTok{\# Find proportion that will fall within 2 standard deviations}
+\NormalTok{two\_std\_dev }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{std\_dev)), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev) }\SpecialCharTok{{-}} 
+  \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{std\_dev)), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev)}
+
+\CommentTok{\# Find proportion that will fall within 3 standard deviations}
+\NormalTok{three\_std\_dev }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{3}\SpecialCharTok{*}\NormalTok{std\_dev)), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev) }\SpecialCharTok{{-}} 
+  \FunctionTok{pnorm}\NormalTok{((mean\_grade }\SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{3}\SpecialCharTok{*}\NormalTok{std\_dev)), }\AttributeTok{mean =}\NormalTok{ mean\_grade, }\AttributeTok{sd =}\NormalTok{ std\_dev)}
+
+\FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}}
+\StringTok{  \{format(round(one\_std\_dev*100, 2), nsmall = 2)\}\% of grades fall within one standard deviation from the mean.}
+\StringTok{  \{format(round(two\_std\_dev*100, 2), nsmall = 2)\}\% of grades fall within one standard deviation from the mean.}
+\StringTok{  \{format(round(three\_std\_dev*100, 2), nsmall = 2)\}\% of grades fall within one standard deviation from the mean.}
+\StringTok{  }
+\StringTok{  \textquotesingle{}}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 68.27% of grades fall within one standard deviation from the mean.
+## 95.45% of grades fall within one standard deviation from the mean.
+## 99.73% of grades fall within one standard deviation from the mean.
+\end{verbatim}
+
+There's no doubt that the grades distribution follows a normal
+distribution.
+
+It wouldn't hurt to show this graphically, right? Instead of using
+\texttt{geom\_density}, let's manually calculate the density of the
+\texttt{Grade} column and then use the results to whip up a density
+plot. We'll then fill the density plot depending on the number of
+standard deviations from the mean.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the Grade column}
+\NormalTok{col }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Grade)}
+
+\CommentTok{\# Compute kernel density estimates}
+\NormalTok{density }\OtherTok{\textless{}{-}} \FunctionTok{density}\NormalTok{(}\FunctionTok{pull}\NormalTok{(col), }\AttributeTok{kernel =} \StringTok{"gaussian"}\NormalTok{)}
+
+\CommentTok{\# Create a dataframe containing coordinates where density is estimated}
+\CommentTok{\#and the corresponding estimated value}
+\NormalTok{density\_xy }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ density}\SpecialCharTok{$}\NormalTok{x,}
+  \AttributeTok{y =}\NormalTok{ density}\SpecialCharTok{$}\NormalTok{y}
+\NormalTok{)}
+
+\CommentTok{\# Make density plots for various deviations of the mean}
+
+\NormalTok{plt\_sd\_1 }\OtherTok{\textless{}{-}}\NormalTok{ density\_xy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{ifelse}\NormalTok{(x}\SpecialCharTok{\textgreater{}}\NormalTok{(mean\_grade}\SpecialCharTok{{-}}\NormalTok{std\_dev) }\SpecialCharTok{\&}\NormalTok{ x}\SpecialCharTok{\textless{}}\NormalTok{(mean\_grade}\SpecialCharTok{+}\NormalTok{std\_dev), x, }\DecValTok{0}\NormalTok{)), }\AttributeTok{fill =} \StringTok{"darkorange"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \DecValTok{50}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{label =} \StringTok{"1 std (68.26\%)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FunctionTok{max}\NormalTok{(col))}\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_grade, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Density"}\NormalTok{)}
+
+
+\CommentTok{\# 2 std deviations from the mean}
+\NormalTok{plt\_sd\_2 }\OtherTok{\textless{}{-}}\NormalTok{ density\_xy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{ifelse}\NormalTok{(x}\SpecialCharTok{\textgreater{}}\NormalTok{(mean\_grade}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{std\_dev)) }\SpecialCharTok{\&}\NormalTok{ x}\SpecialCharTok{\textless{}}\NormalTok{(mean\_grade}\SpecialCharTok{+}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{std\_dev)), x, }\DecValTok{0}\NormalTok{)), }\AttributeTok{fill =} \StringTok{"purple"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \DecValTok{50}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{label =} \StringTok{"2 std (95.45\%)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FunctionTok{max}\NormalTok{(col)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_grade, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{)}
+
+
+\CommentTok{\# 3 std deviations from the mean}
+\NormalTok{plt\_sd\_3 }\OtherTok{\textless{}{-}}\NormalTok{ density\_xy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{ifelse}\NormalTok{(x}\SpecialCharTok{\textgreater{}}\NormalTok{(mean\_grade}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{3}\SpecialCharTok{*}\NormalTok{std\_dev)) }\SpecialCharTok{\&}\NormalTok{ x}\SpecialCharTok{\textless{}}\NormalTok{(mean\_grade}\SpecialCharTok{+}\NormalTok{(}\DecValTok{3}\SpecialCharTok{*}\NormalTok{std\_dev)), x, }\DecValTok{0}\NormalTok{)), }\AttributeTok{fill =} \StringTok{"cyan4"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \DecValTok{50}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{label =} \StringTok{"3 std (99.73\%)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FunctionTok{max}\NormalTok{(col)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_grade, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Grade"}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{)}
+
+
+
+\CommentTok{\# Patching things up}
+\NormalTok{plt\_sd\_1}\SpecialCharTok{|}\NormalTok{ (plt\_sd\_2}\SpecialCharTok{/}\NormalTok{plt\_sd\_3) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 365 rows containing non-finite values (`stat_align()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 189 rows containing missing values (`geom_line()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 219 rows containing non-finite values (`stat_align()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 189 rows containing missing values (`geom_line()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 189 rows containing non-finite values (`stat_align()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 189 rows containing missing values (`geom_line()`).
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+Because you know that the mean grade is \texttt{49.18}, the standard
+deviation is \texttt{21.74}, and distribution of grades is
+\texttt{normal}, you can calculate that \texttt{68.26\%} of students
+should achieve a grade between \texttt{27.44} and \texttt{70.92}, as
+shown in the first plot in the preceding code.
+
+The descriptive statistics you've used to understand the distribution of
+the student data variables are the basis of statistical analysis.
+Because they're such an important part of exploring your data, there's a
+built-in Base R function, \texttt{base::summary()}, that returns the
+result summaries of the results of various objects that are passed to
+it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get summary stats of the data frame}
+\FunctionTok{summary}\NormalTok{(df\_students)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Name             StudyHours        Grade          Pass        
+##  Length:22          Min.   : 1.00   Min.   : 3.00   Mode :logical  
+##  Class :character   1st Qu.: 9.00   1st Qu.:36.25   FALSE:15       
+##  Mode  :character   Median :10.00   Median :49.50   TRUE :7        
+##                     Mean   :10.52   Mean   :49.18                  
+##                     3rd Qu.:12.38   3rd Qu.:62.75                  
+##                     Max.   :16.00   Max.   :97.00
+\end{verbatim}
+
+Of course, because of the need for much more robust data exploration and
+reporting, many packages have been developed for summarizing data.
+
+A good example would be the
+\href{https://github.com/dcomtois/summarytools}{summarytools} package.
+\texttt{summarytools::descr()} does a remarkable job of finding
+statistics for numerical data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get descriptive stats using summary tools package}
+\FunctionTok{library}\NormalTok{(summarytools)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attache Paket: 'summarytools'
+\end{verbatim}
+
+\begin{verbatim}
+## Das folgende Objekt ist maskiert 'package:tibble':
+## 
+##     view
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descr}\NormalTok{(}
+\NormalTok{  df\_students,}
+  \AttributeTok{stats =} \StringTok{"common"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Non-numerical variable(s) ignored: Name, Pass
+\end{verbatim}
+
+\begin{verbatim}
+## Descriptive Statistics  
+## df_students  
+## N: 22  
+## 
+##                    Grade   StudyHours
+## --------------- -------- ------------
+##            Mean    49.18        10.52
+##         Std.Dev    21.74         3.49
+##             Min     3.00         1.00
+##          Median    49.50        10.00
+##             Max    97.00        16.00
+##         N.Valid    22.00        22.00
+##       Pct.Valid   100.00       100.00
+\end{verbatim}
+
+\hypertarget{compare-data}{%
+\subsubsection{Compare data}\label{compare-data}}
+
+Now that you know something about the statistical distribution of the
+data in your dataset, you're ready to examine it to identify any
+apparent relationships between variables.
+
+First of all, remove any rows that contain outliers so that you have a
+sample that's representative of a typical class of students. You
+identified that the StudyHours column contains some outliers with
+extremely low values, so you can remove those rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter to remove outliers}
+\NormalTok{df\_sample }\OtherTok{\textless{}{-}}\NormalTok{ df\_students }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(StudyHours }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The data includes two \emph{numeric} variables (\texttt{StudyHours} and
+\texttt{Grade}) and two \emph{categorical} variables (\texttt{Name} and
+\texttt{Pass}). In R, categorical variables are usually saved as
+\href{https://r4ds.had.co.nz/factors.html}{factors} or character
+vectors.
+
+Let's start by comparing the \texttt{numeric} \emph{StudyHours} column
+with the \texttt{categorical} \emph{Pass} column to see whether there's
+an apparent relationship between the number of hours studied and a
+passing grade.
+
+To make this comparison, you can create box plots that show the
+distribution of StudyHours for each possible Pass value (TRUE and
+FALSE).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot a box plot comparing StudyHours and Pass}
+\NormalTok{df\_sample }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Pass, }\AttributeTok{y =}\NormalTok{ StudyHours, }\AttributeTok{fill =}\NormalTok{ Pass), }\AttributeTok{color =} \StringTok{"gray23"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{) }\SpecialCharTok{+}
+  
+\CommentTok{\# Add titles and labels}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Comparing Pass status and the Study hours"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Pass"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Study Hours"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-13-1.pdf}
+When you compare the StudyHours distributions, it's immediately
+apparent, if not particularly surprising, that students who passed the
+course tended to study for more hours than students who didn't pass. If
+you want to predict whether students are likely to pass the course, the
+amount of time they spend studying might be a good predictive feature.
+
+\hypertarget{compare-numeric-variables}{%
+\subsubsection{Compare numeric
+variables}\label{compare-numeric-variables}}
+
+Now let's compare two numeric variables. Start by creating a bar chart
+that shows both grades and study hours.
+
+To do this, you can first transform your data to a \texttt{long} format
+by using \texttt{tidyr::pivot\_longer()} and then play around with the
+\texttt{fill} aesthetic and \texttt{position\_dodge()} to place
+overlapping objects directly \emph{beside} one another.
+
+Also, we'll try out
+\href{https://pmassicotte.github.io/paletteer_gallery/}{the paletter
+gallery}, a collection of color palettes in a single R package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pivot data from wide to long}
+\NormalTok{df\_sample\_long }\OtherTok{\textless{}{-}}\NormalTok{ df\_sample }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Pass) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Name =} \FunctionTok{fct\_reorder}\NormalTok{(Name, Grade, }\AttributeTok{.desc =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{!}\NormalTok{Name, }\AttributeTok{names\_to =} \StringTok{"Metrics"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Values"}\NormalTok{)}
+
+\CommentTok{\# Show first 10 rows}
+\NormalTok{df\_sample\_long }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    Name  Metrics    Values
+##    <fct> <chr>       <dbl>
+##  1 Dan   StudyHours  10   
+##  2 Dan   Grade       50   
+##  3 Joann StudyHours  11.5 
+##  4 Joann Grade       50   
+##  5 Pedro StudyHours   9   
+##  6 Pedro Grade       47   
+##  7 Rosie StudyHours  16   
+##  8 Rosie Grade       97   
+##  9 Ethan StudyHours   9.25
+## 10 Ethan Grade       49
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try out some color palettes}
+\FunctionTok{library}\NormalTok{(paletteer)}
+
+\CommentTok{\# Compare numeric variables with bar plots}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_sample\_long) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Values, }\AttributeTok{fill =}\NormalTok{ Metrics), }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Student\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_paletteer\_d}\NormalTok{(}\StringTok{"calecopal::kelp1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{panel.grid =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.grid.major.y =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{\textquotesingle{}\#95a5a6\textquotesingle{}}\NormalTok{,}
+                                      \AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
+                                      \AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{),}
+    \AttributeTok{legend.title =} \FunctionTok{element\_blank}\NormalTok{()}
+    
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+## i Please use the `linewidth` argument instead.
+\end{verbatim}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+The chart shows bars for both the grade and study hours for each
+student. They're not easy to compare, because the values are on
+different scales. Grades are measured in grade points, which range from
+3 to 97, and study time is measured in hours, which range from 1 to 16.
+
+A common technique when you're dealing with numeric data in different
+scales is to \emph{normalize} the data so that the values retain their
+proportional distribution, but are measured on the same scale. To do
+this, you use a technique called \emph{\texttt{MinMax}}\texttt{scaling},
+which distributes the values proportionally on a scale from 0 to 1. You
+could write the code to apply this transformation, but the
+\href{https://scales.r-lib.org/}{scales} library provides a scaler,
+\texttt{scales::rescale()}, that does it for you.
+
+The good news is that the scaler is installed when you install ggplot2
+or the Tidyverse.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the scales package}
+\FunctionTok{library}\NormalTok{(scales)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attache Paket: 'scales'
+\end{verbatim}
+
+\begin{verbatim}
+## Das folgende Objekt ist maskiert 'package:purrr':
+## 
+##     discard
+\end{verbatim}
+
+\begin{verbatim}
+## Das folgende Objekt ist maskiert 'package:readr':
+## 
+##     col_factor
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Normalize the numeric columns}
+\CommentTok{\# group\_by ensures that StudyHours and Grade are normalized independently}
+\NormalTok{df\_normalized }\OtherTok{\textless{}{-}}\NormalTok{ df\_sample\_long }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Metrics) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Values =} \FunctionTok{rescale}\NormalTok{(Values, }\AttributeTok{to =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)))}
+
+\CommentTok{\# Show some of the normalized data}
+\NormalTok{df\_normalized }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+## # Groups:   Metrics [2]
+##    Name  Metrics    Values
+##    <fct> <chr>       <dbl>
+##  1 Dan   Grade       0.427
+##  2 Joann Grade       0.427
+##  3 Pedro Grade       0.390
+##  4 Rosie Grade       1    
+##  5 Ethan Grade       0.415
+##  6 Dan   StudyHours  0.4  
+##  7 Joann StudyHours  0.55 
+##  8 Pedro StudyHours  0.3  
+##  9 Rosie StudyHours  1    
+## 10 Ethan StudyHours  0.325
+\end{verbatim}
+
+Great! Your grades and study hours are now rescaled.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compare numeric variables with bar plots}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_normalized) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Name, }\AttributeTok{y =}\NormalTok{ Values, }\AttributeTok{fill =}\NormalTok{ Metrics), }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Student\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_paletteer\_d}\NormalTok{(}\StringTok{"calecopal::kelp1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{panel.grid =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.grid.major.y =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{\textquotesingle{}\#95a5a6\textquotesingle{}}\NormalTok{,}
+                                      \AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
+                                      \AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{),}
+    \AttributeTok{legend.title =} \FunctionTok{element\_blank}\NormalTok{()}
+    
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-17-1.pdf}
+With the data normalized, it's easier to see an apparent relationship
+between grades and study time. It's not an exact match, but it seems
+clear that students with higher grades tend to have studied more.
+
+\hypertarget{fitting-a-simple-linear-regression-model}{%
+\subsubsection{Fitting a simple linear regression
+model}\label{fitting-a-simple-linear-regression-model}}
+
+From the previous comparisons, there seems to be a correlation between
+study times and grades. In fact, there's a statistical
+\emph{correlation} measurement that you can use to quantify the
+relationship between these columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute Pearson Product Moment correlation coefficient}
+\FunctionTok{cor}\NormalTok{(df\_sample}\SpecialCharTok{$}\NormalTok{StudyHours, df\_sample}\SpecialCharTok{$}\NormalTok{Grade)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9117666
+\end{verbatim}
+
+The correlation statistic is a value from -1 to 1 that indicates the
+strength of a relationship. Values greater than 0 indicate a
+\emph{positive} correlation (high values of one variable tend to
+coincide with high values of the other), while values less than 0
+indicate a \emph{negative} correlation (high values of one variable tend
+to coincide with low values of the other). A correlation equal to 0
+indicates that there is no relationship between the two variables. In
+this case, the correlation value is close to 1, which shows a strong
+positive correlation between study times and grades.
+
+\begin{quote}
+\textbf{Note}: Data scientists often quote the maxim ``correlation is
+not causation.'' In other words, as tempting as it might be, you
+shouldn't interpret the statistical correlation as explaining \emph{why}
+one of the values is high. In the case of the student data, the
+statistic demonstrates that students with high grades tend to have
+studied a great number of hours.But this is not the same as saying that
+they achieved high grades \emph{because} they studied a lot. The
+statistic could equally be used as evidence to support the nonsensical
+conclusion that the students studied a lot \emph{because} their grades
+were going to be high.
+\end{quote}
+
+Another way to visualize the apparent correlation between two numeric
+columns is to use a \emph{scatter} plot. With \texttt{geom\_point},
+you'll be well on your way to whipping up a neat scatterplot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a scatter plot of study hours and grade}
+\NormalTok{df\_sample }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ StudyHours, }\AttributeTok{y =}\NormalTok{ Grade)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Study Time vs Grade\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+Again, it looks like there's a discernible pattern in which the students
+who studied the most hours are also the students who got the highest
+grades.
+
+You can see this more clearly by adding to the plot a \emph{regression}
+line (or a \emph{line of best fit}) that shows the general trend in the
+data. To do this, you can use a statistical technique called \emph{least
+squares regression}.
+
+\begin{quote}
+\textbf{Warning: math ahead!}
+
+Cast your mind back to when you were learning how to solve linear
+equations in school, and recall that the \emph{slope-intercept} form of
+a linear equation looks like this:
+
+\texttt{y\ =\ mx\ +\ b}.
+
+In this equation, \emph{y} and \emph{x} are the coordinate variables,
+\emph{m} is the slope of the line, and \emph{b} is the y-intercept
+(where the line goes through the y-axis).
+
+In the case of your scatter plot for our student data, you already have
+values for \emph{x} (\emph{StudyHours}) and \emph{y} (\emph{Grade}), so
+you need only calculate the intercept and slope of the straight line
+that lies closest to those points. Then you can form a linear equation
+that calculates a new \emph{y} value on that line for each of your
+\emph{x} values. To avoid confusion, let's call this new \emph{y} value
+\emph{f(x)}, because it's the output from a linear equation
+\textbf{\emph{f}}unction based on \emph{x}. The difference between the
+original \emph{y} (\emph{Grade}) value and the \emph{f(x)} value is the
+\emph{error} between the regression line and the actual \emph{Grade}
+achieved by the student. Your goal is to calculate the slope and
+intercept for a line with the lowest overall error.
+
+Specifically, you define the overall error by taking the error for each
+point, squaring it, and adding all the squared errors together. The line
+of best fit is the line that gives you the lowest value for the sum of
+the squared errors, hence the name \emph{least squares regression}.
+\end{quote}
+
+Fortunately, you don't need to code the regression calculation yourself.
+The inbuilt R Stats Package \emph{stats} provides the \texttt{lm()}
+function to do the hard work for you. \texttt{lm()} takes a formula of
+the form:
+
+\texttt{outcome\ \textasciitilde{}\ predictor}
+
+This returns, among other things, the coefficients you need for the
+slope equation, slope (\emph{m}) and intercept (\emph{b}), based on a
+specified pair of variable samples you want to compare.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Drop all columns except Grade and StudyHours}
+\NormalTok{df\_regression }\OtherTok{\textless{}{-}}\NormalTok{ df\_sample }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(Grade, StudyHours))}
+
+\CommentTok{\# Fit a linear model}
+\NormalTok{lm\_df\_regression }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Grade }\SpecialCharTok{\textasciitilde{}}\NormalTok{ StudyHours, }\AttributeTok{data =}\NormalTok{ df\_regression)}
+
+\CommentTok{\# Get the regression slope and intercept}
+\NormalTok{intercept\_b }\OtherTok{\textless{}{-}}\NormalTok{ lm\_df\_regression}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{]}
+\NormalTok{slope\_m }\OtherTok{\textless{}{-}}\NormalTok{ lm\_df\_regression}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{]}
+\FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}slope: \{format(round(slope\_m, 4), nsmall = 4)\}}
+\StringTok{  y{-}intercept: \{format(round(intercept\_b, 4), nsmall = 4)\}}
+\StringTok{  so…}
+\StringTok{   f(x) = \{format(round(slope\_m, 4), nsmall = 4)\}x + \{format(round(intercept\_b, 4), nsmall = 4)\}\textquotesingle{}}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## slope: 6.3134
+## y-intercept: -17.9164
+## so…
+##  f(x) = 6.3134x + -17.9164
+\end{verbatim}
+
+Now that you have the equation f(x) = 6.3134x + -17.9164 of the least
+squares regression line, you can use it to estimate the grade based on
+the amount of hours spent studying.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the function (mx + b) to calculate f(x) for each x (StudyHours) value}
+\NormalTok{df\_regression }\OtherTok{\textless{}{-}}\NormalTok{ df\_regression }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{fx =}\NormalTok{ (slope\_m }\SpecialCharTok{*}\NormalTok{ StudyHours }\SpecialCharTok{+}\NormalTok{ intercept\_b),}
+         \AttributeTok{error =}\NormalTok{ fx }\SpecialCharTok{{-}}\NormalTok{ Grade)}
+
+
+\CommentTok{\# Show data frame}
+\NormalTok{df\_regression}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 21 x 4
+##    Grade StudyHours    fx   error
+##    <dbl>      <dbl> <dbl>   <dbl>
+##  1    50      10     45.2  -4.78 
+##  2    50      11.5   54.7   4.69 
+##  3    47       9     38.9  -8.10 
+##  4    97      16     83.1 -13.9  
+##  5    49       9.25  40.5  -8.52 
+##  6    53      11.5   54.7   1.69 
+##  7    42       9     38.9  -3.10 
+##  8    26       8.5   35.7   9.75 
+##  9    74      14.5   73.6  -0.372
+## 10    82      15.5   79.9  -2.06 
+## # ... with 11 more rows
+\end{verbatim}
+
+You now have a data frame that contains the following values:
+
+\begin{itemize}
+\tightlist
+\item
+  The \emph{StudyHours} for each student
+\item
+  The \emph{Grade} achieved by each student
+\item
+  The \emph{f(x)} value, calculated by using the regression line
+  coefficients
+\item
+  The \emph{error} between the calculated \emph{f(x)} value and the
+  actual \emph{Grade} value.
+\end{itemize}
+
+Some of the errors, particularly at the extreme ends, are quite large
+(up to over 17.5 grade points). In general, though, the line is pretty
+close to the actual grades.
+
+Now it's time to show this visually. You'll create the scatter plot of
+the sample study hours and grades, as before, and then add a line of
+best fit based on the least squares regression coefficients.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_sample }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ StudyHours, }\AttributeTok{y =}\NormalTok{ Grade)) }\SpecialCharTok{+}
+  \CommentTok{\# Add a line based on the linear model}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =}\NormalTok{ intercept\_b, }\AttributeTok{slope =}\NormalTok{ slope\_m, }\AttributeTok{color =} \StringTok{"springgreen3"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Study Time vs Grade\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Examine-real-world-data_files/figure-latex/unnamed-chunk-22-1.pdf}
+\#\#\# Use the regression coefficients for prediction
+
+Now that you have the regression coefficients for the study time and
+grade relationship, you can use them in a function to estimate the
+expected grade for a specified amount of study time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define a function based on our regression coefficients}
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  slope\_m }\OtherTok{\textless{}{-}}  \FloatTok{6.3134}
+\NormalTok{  y\_intercept\_b }\OtherTok{\textless{}{-}}  \SpecialCharTok{{-}}\FloatTok{17.9164}
+  \CommentTok{\# y = mx + b}
+\NormalTok{  fx }\OtherTok{\textless{}{-}}\NormalTok{  slope\_m }\SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y\_intercept\_b}
+  \FunctionTok{return}\NormalTok{(fx)}
+\NormalTok{\}}
+
+\CommentTok{\# Assume the student studied for 14 hours per week}
+\NormalTok{study\_time }\OtherTok{\textless{}{-}}  \DecValTok{14}
+
+\CommentTok{\# Get f(x) for study time}
+\NormalTok{prediction }\OtherTok{\textless{}{-}} \FunctionTok{f}\NormalTok{(}\AttributeTok{x =}\NormalTok{ study\_time)}
+
+\CommentTok{\# Grade can\textquotesingle{}t be less than 0 or more than 100}
+\NormalTok{expected\_grade }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{min}\NormalTok{(}\DecValTok{100}\NormalTok{, prediction))}
+
+\CommentTok{\# Print the estimated grade}
+\FunctionTok{glue}\NormalTok{(}
+  \StringTok{\textquotesingle{}Studying for \{study\_time\} hours per week may result in a grade of \{format(round(expected\_grade))\}}
+\StringTok{  \textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Studying for 14 hours per week may result in a grade of 70
+\end{verbatim}
+
+By applying statistics to sample data, you've determined a relationship
+between study time and grade. And you've encapsulated that relationship
+in a general function that can be used to predict a grade for a given
+amount of study time.
+
+This technique is in fact the basic premise of machine learning. You can
+take a set of sample data that includes one or more \emph{features} (in
+this case, the number of hours studied) and a known \emph{label} value
+(in this case, the grade achieved) and use the sample data to derive a
+function that calculates predicted label values for any specified set of
+features.
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+In this exercise, you've learned:
+
+\begin{itemize}
+\tightlist
+\item
+  What outliers are and how to remove them
+\item
+  How data can be skewed
+\item
+  How to look at the spread of data
+\item
+  Basic ways to compare variables, such as grades and study time
+\end{itemize}
+
+\hypertarget{further-reading}{%
+\subsection{Further reading}\label{further-reading}}
+
+To learn more about the R packages you explored in this notebook, see:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.tidyverse.org/packages/}{Tidyverse packages}
+\item
+  \href{https://r4ds.had.co.nz/}{R for Data Science: Visualize, Model,
+  Transform, Tidy, and Import Data} by H. Wickham and G. Grolemund
+\end{itemize}
+
+\end{document}
